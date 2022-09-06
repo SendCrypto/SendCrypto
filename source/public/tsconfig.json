@@ -12,6 +12,6 @@
 		"sourceMap": true
 	},
 	"include": [
-		"./**/*",
+		"./**/*", "../webpack.config.ts",
 	],
 }

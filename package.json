@@ -7,11 +7,12 @@
     "doc": "docs"
   },
   "scripts": {
-    "build": "npm run clean && npm run transpile",
+    "build": "npm run clean && npm run transpile && npm run webpack",
     "clean": "rimraf ./transpiled",
     "start": "npm run build && start source/public/index.html",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "transpile": "tsc --build"
+    "transpile": "tsc --build",
+    "webpack": "webpack --config transpiled/webpack.config.js"
   },
   "repository": {
     "type": "git",
