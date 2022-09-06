@@ -22,4 +22,5 @@ button in the middle row as shown:
 ![Screenshot of GitHub Desktop with this repo open in dark mode](images/GitHubDesktop.png)  
 
 # Run the code
-This is a Node application with an SQL backend.  The SQL piece may eventually migrate to TableLand but isn't there yet.
+This is a Node application with an SQL backend.  The SQL piece may eventually migrate to TableLand but isn't there yet.  
+To run, open a terminal and `cd` to INSTALLDIR, then run `npm start`.  
