@@ -1,3 +1,6 @@
 h1, h3, footer {
 	text-align: center;
 }
+#specifiedRecipient {
+	display: none;
+}
