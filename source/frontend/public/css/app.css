@@ -4,3 +4,6 @@ h1, h3, div, footer {
 #specifiedRecipient {
 	display: none;
 }
+hr {
+	width: 90%;
+}
