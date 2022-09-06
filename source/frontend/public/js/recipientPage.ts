@@ -6,7 +6,7 @@ interface MasterParams {
 	recipient ?: string,
 	amount ?: number,
 	amountCurrency ?: string,
-	sendCurrency ?: string,
+	viewCurrency ?: string,
 	network ?: string,
 }
 
