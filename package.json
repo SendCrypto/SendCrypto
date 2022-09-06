@@ -9,8 +9,9 @@
   "scripts": {
     "build": "npm run clean && npm run transpile && npm run webpack && npm run copyNonScriptFiles",
     "clean": "rimraf ./transpiled && rimraf ./dist",
-    "copyNonScriptFiles": "copyfiles -u 1 -e source/**/*.ts -e source/**/*.js -e source/**/tsconfig.json source/**/* transpiled/public/**/*.js.map dist",
-    "start": "npm run build && start dist/frontend/public/index.html",
+    "copyNonScriptFiles": "copyfiles -u 1 -e source/**/*.ts -e source/**/*.js -e source/**/tsconfig.json source/**/* transpiled/**/*.js.map transpiled/backend/**/*.js dist",
+    "start": "npm run build && npm run startServer && start dist/frontend/public/index.html",
+    "startServer": "node ./dist/backend/startServer.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "transpile": "tsc --build",
     "webpack": "webpack --config transpiled/frontend/webpack.config.js"
