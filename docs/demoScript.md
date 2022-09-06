@@ -8,4 +8,3 @@ you can go to PayPal and set up a PayPal.me link of the form PayPal.me/YourName/
 You can then share this link with others who can click on it and after further confirming details with PayPal, send their money to your PayPal account.  
 
 SendCrypto is the web3 equivalent of that, bringing the benefits of decentralization and access to cryptocurrency.
-
