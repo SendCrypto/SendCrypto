@@ -3,7 +3,7 @@ export const MostPages = {
 		MostPages.addFaviconsToHead();
 	},
 
-	//Add tags per instructions from realfavicongenerator.net
+	//Add tags per instructions from realfavicongenerator.net, and stylesheet
 	addFaviconsToHead: function() {
 		const head = document.getElementsByTagName('head')[0];
 		if(typeof head === 'undefined') {
@@ -11,6 +11,13 @@ export const MostPages = {
 			return;
 		}
 		head.append(
+			MostPages.createElementWithAttributes(
+				'link',
+				{
+					rel: "stylesheet",
+					href: "./css/app.css",
+				}
+			),
 			MostPages.createElementWithAttributes(
 				'link',
 				{
