@@ -7,7 +7,7 @@
 			"dom.iterable",
 		],
 		//Output:
-		"outDir": "../../transpiled",
+		"outDir": "../../../transpiled/frontend",
 		"removeComments": false,
 		"sourceMap": true
 	},
