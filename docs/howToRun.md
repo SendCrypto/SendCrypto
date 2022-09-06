@@ -21,6 +21,10 @@ From GitHub Desktop, you can open this directory in your file explorer by clicki
 button in the middle row as shown:  
 ![Screenshot of GitHub Desktop with this repo open in dark mode](images/GitHubDesktop.png)  
 
+# Set environment variables
+**Before** you open any terminal or code editor to run this program, set the following environment variables:  
+*(none at present)*
+
 # Run the code
 This is a Node application with an SQL backend.  The SQL piece may eventually migrate to TableLand but isn't there yet.  
 To run, open a terminal and `cd` to INSTALLDIR, then run `npm start`.  
