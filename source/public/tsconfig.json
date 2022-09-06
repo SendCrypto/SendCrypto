@@ -6,4 +6,7 @@
 			"dom.iterable",
 		],
 	},
+	"include": [
+		"./**/*",
+	],
 }
