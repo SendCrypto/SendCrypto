@@ -7,8 +7,9 @@
     "doc": "docs"
   },
   "scripts": {
-    "build": "npm run clean && npm run transpile && npm run webpack",
+    "build": "npm run clean && npm run transpile && npm run webpack && npm run copyNonScriptFiles",
     "clean": "rimraf ./transpiled && rimraf ./dist",
+    "copyNonScriptFiles": "copyfiles -u 1 -e source/**/*.ts -e source/**/*.js -e source/**/tsconfig.json source/**/* transpiled/public/**/*.js.map dist",
     "start": "npm run build && start source/frontend/public/index.html",
     "test": "echo \"Error: no test specified\" && exit 1",
     "transpile": "tsc --build",
