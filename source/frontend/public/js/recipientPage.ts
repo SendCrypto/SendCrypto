@@ -9,25 +9,27 @@ interface MasterParams {
 	viewCurrency ?: string,
 	network ?: string,
 }
+interface MasterParamsWithRecipient extends MasterParams {
+	recipient : string, //not optional here
+}
 
 export const RecipientPage = {
 	onPageLoad : function() {
 		MostPages.onPageLoad();
 		const masterParams = RecipientPage.getParamsFromPath();
-		const recipient = masterParams.recipient;
-		if(typeof recipient === 'string' && recipient.length > 0) {
-			console.log('Recipient detected.', recipient);
-			MostPages.setBlockVisibility('noRecipient', false);
-			MostPages.setBlockVisibility('specifiedRecipient', true);
-			let recipientSpan = document.getElementById('recipient');
-			if(recipientSpan === null) {
-				throw new Error('Could not find span to set recipient.');
-			}
-			recipientSpan.innerText = recipient;
+		if (RecipientPage.recipientIsPresent(masterParams)) {
+			RecipientPage.showSendPage(masterParams);
 		} else {
 			MostPages.setBlockVisibility('noRecipient', true);
 			MostPages.setBlockVisibility('specifiedRecipient', false);
 		}
+	},
+
+	recipientIsPresent: function(
+		masterParams: MasterParams
+	) : masterParams is MasterParamsWithRecipient {
+		const recipient = masterParams.recipient;
+		return (typeof recipient === 'string' && recipient.length > 0);
 	},
 
 	getParamsFromPath: function() : MasterParams {
@@ -42,5 +44,19 @@ export const RecipientPage = {
 		return {
 			recipient,
 		};
+	},
+
+	showSendPage: function(
+		masterParams: MasterParamsWithRecipient
+	) {
+		const recipient = masterParams.recipient;
+		console.log('Recipient detected.', recipient);
+		MostPages.setBlockVisibility('noRecipient', false);
+		MostPages.setBlockVisibility('specifiedRecipient', true);
+		let recipientSpan = document.getElementById('recipient');
+		if(recipientSpan === null) {
+			throw new Error('Could not find span to set recipient.');
+		}
+		recipientSpan.innerText = recipient;
 	},
 }
