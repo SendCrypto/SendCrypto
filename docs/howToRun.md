@@ -27,4 +27,6 @@ button in the middle row as shown:
 
 # Run the code
 This is a Node application with an SQL backend.  The SQL piece may eventually migrate to TableLand but isn't there yet.  
-To run, open a terminal and `cd` to INSTALLDIR, then run `npm start`.  
+To run, open a terminal and `cd` to INSTALLDIR.
+If you haven't done so before (e.g. first-time install), run `npm i` to install dependencies.  
+Then run `npm start`.  
