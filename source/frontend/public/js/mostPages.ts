@@ -19,9 +19,13 @@ export const MostPages = {
 	createElementWithAttributes: function<
 		EN extends keyof HTMLElementTagNameMap
 	> (
-		tagName: string & EN
+		tagName: string & EN,
+		attributes: { [index: string] : string }
 	) : HTMLElementTagNameMap[EN] {
 		const result = document.createElement(tagName);
+		for(let attributeName in attributes) {
+			result.setAttribute(attributeName, attributes[attributeName]);
+		}
 		return result;
 	},
 
