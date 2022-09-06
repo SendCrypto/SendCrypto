@@ -58,11 +58,15 @@ export const MostPages = {
 					content: "#b6ecf6",
 				}
 			),
+			MostPages.createElementWithAttributes(
+				'meta',
+				{
+					name: "theme-color",
+					content: "#b6ecf6",
+				}
+			),
 		);
 		//Add the following, copied from realfavicongenerator.net
-		/*
-		<meta name="theme-color" content="#b6ecf6">
-		*/
 	},
 
 	createElementWithAttributes: function<
