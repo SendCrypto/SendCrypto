@@ -6,12 +6,15 @@ interface MasterParams {
 	recipient ?: string,
 	amount ?: number,
 	amountCurrency ?: string,
-	viewCurrency ?: string,
+	viewCurrency ?: SupportedViewCurrency,
 	network ?: string,
 }
 interface MasterParamsWithRecipient extends MasterParams {
 	recipient : string, //not optional here
 }
+
+const supportedViewCurrencies = ['USD'];
+type SupportedViewCurrency = typeof supportedViewCurrencies[number];
 
 export const RecipientPage = {
 	onPageLoad : function() {
