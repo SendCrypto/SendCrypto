@@ -51,10 +51,16 @@ export const MostPages = {
 					color: "#66bb6a",
 				}
 			),
+			MostPages.createElementWithAttributes(
+				'meta',
+				{
+					name: "msapplication-TileColor",
+					content: "#b6ecf6",
+				}
+			),
 		);
 		//Add the following, copied from realfavicongenerator.net
 		/*
-		<meta name="msapplication-TileColor" content="#b6ecf6">
 		<meta name="theme-color" content="#b6ecf6">
 		*/
 	},
