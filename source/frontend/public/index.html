@@ -16,7 +16,27 @@
 	</div>
 	<div id="specifiedRecipient">
 		<p>
-			A recipient has been specified, but functionality is not yet implemented to send the funds.
+			I want to send
+			<input type="number" min="0" name="amount" id="amount" />
+			<select name="amountCurrency" id="amountCurrency">
+				<option>ETH</option>
+			</select>
+			(which is approximately
+			<span id="viewAmount">[Calculating...]</span>
+			<select name="amountCurrency" id="amountCurrency">
+				<option>ETH</option>
+				<option selected>USD</option>
+			</select>)
+			on
+			<select name="network" id="network">
+				<option value="ETH">ETH mainnet</option>
+			</select>
+			to
+			<span id="recipient">the recipient</span>.
+			<br>
+			<button id="signInWallet">Sign transaction in wallet!</button>
+			<br>
+			Note: functionality is not yet implemented to send the funds.
 		</p>
 	</div>
 	<footer>
