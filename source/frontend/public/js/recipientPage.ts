@@ -14,6 +14,15 @@ export const RecipientPage = {
 	onPageLoad : function() {
 		MostPages.onPageLoad();
 		const masterParams = RecipientPage.getParamsFromPath();
+		const recipient = masterParams.recipient;
+		if(typeof recipient === 'string' && recipient.length > 0) {
+			console.log('Recipient detected.', recipient);
+			MostPages.setBlockVisibility('noRecipient', false);
+			MostPages.setBlockVisibility('specifiedRecipient', true);
+		} else {
+			MostPages.setBlockVisibility('noRecipient', true);
+			MostPages.setBlockVisibility('specifiedRecipient', false);
+		}
 	},
 
 	getParamsFromPath: function() : MasterParams {

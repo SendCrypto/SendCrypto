@@ -89,4 +89,17 @@ export const MostPages = {
 		return result;
 	},
 
+	setBlockVisibility(
+		elementId : string,
+		shouldBeDisplayed : boolean
+	) {
+		const div = document.getElementById(elementId);
+		if(div === null) {
+			if(shouldBeDisplayed) {
+				console.warn('Could not find div with id ' + elementId + ' to show.');
+			}
+		} else {
+			div.style.display = (shouldBeDisplayed ? 'block' : 'none');
+		}
+	},
 }
