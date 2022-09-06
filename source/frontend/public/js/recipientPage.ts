@@ -19,6 +19,11 @@ export const RecipientPage = {
 			console.log('Recipient detected.', recipient);
 			MostPages.setBlockVisibility('noRecipient', false);
 			MostPages.setBlockVisibility('specifiedRecipient', true);
+			let recipientSpan = document.getElementById('recipient');
+			if(recipientSpan === null) {
+				throw new Error('Could not find span to set recipient.');
+			}
+			recipientSpan.innerText = recipient;
 		} else {
 			MostPages.setBlockVisibility('noRecipient', true);
 			MostPages.setBlockVisibility('specifiedRecipient', false);
