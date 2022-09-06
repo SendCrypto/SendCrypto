@@ -1,5 +1,5 @@
 # SendCrypto
-An easy way to send or request cryptocurrency payments.
+SendCrypto is an easy way to send or request cryptocurrency payments.
 
 SendCrypto was built during part of EthGlobal's 2022 flagship hackathon [EthOnline](https://online.ethglobal.com/).  
 
