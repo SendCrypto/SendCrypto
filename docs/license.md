@@ -112,3 +112,6 @@ where it is described as being in the public domain from a copyright perspective
 The Flying Money emoji from Google Noto-Emoji and the ETH logo SVGs were combined 
 and the combination enhanced using GPL-licensed [Inkscape](https://inkscape.org/)
 as an SVG editor.
+
+They were then downsized to favicon use with
+[realfavicongenerator.net](https://realfavicongenerator.net/).
