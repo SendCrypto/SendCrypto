@@ -10,7 +10,7 @@
     "build": "npm run clean && npm run transpile && npm run webpack && npm run copyNonScriptFiles",
     "clean": "rimraf ./transpiled && rimraf ./dist",
     "copyNonScriptFiles": "copyfiles -u 1 -e source/**/*.ts -e source/**/*.js -e source/**/tsconfig.json source/**/* transpiled/**/*.js.map transpiled/backend/**/*.js dist",
-    "start": "npm run build && npm run startServer && start dist/frontend/public/index.html",
+    "start": "npm run build && npm run startServer",
     "startServer": "node ./dist/backend/startServer.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "transpile": "tsc --build",
