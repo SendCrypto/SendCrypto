@@ -13,3 +13,10 @@ There is a SendCrypto page for every blockchain account, also accessible by ENS 
 Optionally, you can specify the amount you want someone to be prompted to send when they click the link.  
 This can be a fixed amount, or you can dynamically program it in to some workflow, or like so many fundraising e-mails and web pages you can 
 give people options with different amounts in different links displayed side by side, including a custom option.  
+
+Eventually, you'll be able to customize pages for which you are the recipient, or where the recipient has designated you to customize their page, 
+making it easy to specify alternative forms of donation such as an address where a check can be mailed or other fundraising links that don't use 
+cryptocurrency at all, allowing the recipient to only have to post one fundraising link to a page that supports and even prioritizes the crypto option.  
+
+Even if donors don't use that option, the exposure will help communicate the message that this technology is coming and becoming more mainstream,
+maybe making it more worth looking into how to actively participate.  
