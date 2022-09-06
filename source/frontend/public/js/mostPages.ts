@@ -43,10 +43,17 @@ export const MostPages = {
 					href: "/site.webmanifest",
 				}
 			),
+			MostPages.createElementWithAttributes(
+				'link',
+				{
+					rel: "mask-icon",
+					href: "/safari-pinned-tab.svg",
+					color: "#66bb6a",
+				}
+			),
 		);
 		//Add the following, copied from realfavicongenerator.net
 		/*
-		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#66bb6a">
 		<meta name="msapplication-TileColor" content="#b6ecf6">
 		<meta name="theme-color" content="#b6ecf6">
 		*/
