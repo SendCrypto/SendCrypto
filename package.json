@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/SendCrypto/SendCrypto/issues"
   },
-  "homepage": "https://github.com/SendCrypto/SendCrypto#readme"
+  "homepage": "https://github.com/SendCrypto/SendCrypto#readme",
+  "devDependencies": {
+    "typescript": "^4.8.2"
+  }
 }
