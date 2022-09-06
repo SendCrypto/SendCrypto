@@ -9,4 +9,3 @@ export class ExpressServer {
 		})
 	}
 }
-new ExpressServer();
