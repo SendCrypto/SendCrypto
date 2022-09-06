@@ -108,3 +108,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 The ETH logo found in graphics is from
 [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ethereum-icon-purple.svg)
 where it is described as being in the public domain from a copyright perspective.
+
+The Flying Money emoji from Google Noto-Emoji and the ETH logo SVGs were combined 
+and the combination enhanced using GPL-licensed [Inkscape](https://inkscape.org/)
+as an SVG editor.
