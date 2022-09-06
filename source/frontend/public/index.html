@@ -13,6 +13,36 @@
 			You can easily create a link to receive payments through your own page on this site,
 			and share that link with people who might send you money.
 		</p>
+		<p>
+			A link is built as follows, always excluding quotes:
+			<ul>
+				<li>Start with "https://".</li>
+				<li>Follow that with your preferred base domain: "sendcrypto.money" or "sendcryptoto.me" or "sendcryptocurrencyto.me".</li>
+				<li>Follow that with a slash: "/".</li>
+				<li>
+					Follow that with the address or
+					ENS name
+					of the account that should receive the funds.
+					For example: "0x46438f69ab55D8f29956b6A2B45c9b6f3Fa6332c".
+				</li>
+				<li>Follow that with a slash: "/".</li>
+				<li>
+					Optionally follow that with the type of currency you would like to specify an amount in, followed by a slash ("/").
+					You can currently specify the amount in "USD" or any of the cryptocurrency tokens noted below. This is not case-sensitive.
+					If you do not specify anything here, USD will be assumed.
+				</li>
+				<li>
+					Optionally include the default amount you would like to be filled in when someone arrives at this page,
+					followed by a slash.
+				</li>
+				<li>
+					Optionally include the cryptocurrency asset that should be specified by default,
+					if a user has holdings in multiple supported cryptocurrencies.
+					Currently, options are just "ETH". This is not case-sensitive.
+				</li>
+			</ul>
+			Any "/" at the end of a URL (in this application) is optional.
+		</p>
 	</div>
 	<div id="specifiedRecipient">
 		<p>
