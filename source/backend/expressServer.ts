@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express';
 const app = express();
 export class ExpressServer {
 	constructor(port: number = 25922) { //EthOnline deadline is 25 Sept 2022
