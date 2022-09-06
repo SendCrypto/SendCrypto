@@ -15,4 +15,14 @@ export const MostPages = {
 		<meta name="theme-color" content="#b6ecf6">
 		*/
 	},
+
+	createElementWithAttributes: function<
+		EN extends keyof HTMLElementTagNameMap
+	> (
+		tagName: string & EN
+	) : HTMLElementTagNameMap[EN] {
+		const result = document.createElement(tagName);
+		return result;
+	},
+
 }
