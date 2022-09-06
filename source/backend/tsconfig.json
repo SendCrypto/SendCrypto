@@ -1,0 +1,12 @@
+{
+	"extends": "@tsconfig/node18/tsconfig.json",
+	"compilerOptions": {
+		//Output:
+		"outDir": "../../transpiled/backend",
+		"removeComments": false,
+		"sourceMap": true
+	},
+	"include": [
+		"./**/*",
+	],
+}
