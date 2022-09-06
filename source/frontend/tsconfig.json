@@ -7,11 +7,11 @@
 			"dom.iterable",
 		],
 		//Output:
-		"outDir": "../../../transpiled/frontend",
+		"outDir": "../../transpiled/frontend",
 		"removeComments": false,
 		"sourceMap": true
 	},
 	"include": [
-		"./**/*", "../webpack.config.ts",
+		"./**/*",
 	],
 }
