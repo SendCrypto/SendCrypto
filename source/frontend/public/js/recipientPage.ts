@@ -13,8 +13,8 @@ interface MasterParamsWithRecipient extends MasterParams {
 	recipient : string, //not optional here
 }
 
-const supportedSendCurrencies = ['ETH'] as const;
-const supportedViewCurrencies = ['USD'] as const;
+const supportedSendCurrencies = ['ETH'];
+const supportedViewCurrencies = ['USD'];
 type SupportedSendCurrency = typeof supportedSendCurrencies[number];
 type SupportedViewCurrency = SupportedSendCurrency | typeof supportedViewCurrencies[number];
 
