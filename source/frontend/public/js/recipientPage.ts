@@ -5,7 +5,7 @@ import { MostPages } from "./mostPages.js";
 interface MasterParams {
 	recipient ?: string,
 	amount ?: number,
-	amountCurrency ?: string,
+	sendCurrency ?: string,
 	viewCurrency ?: SupportedViewCurrency,
 	network ?: string,
 }
