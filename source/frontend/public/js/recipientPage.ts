@@ -97,6 +97,7 @@ export const RecipientPage = {
 		}
 		recipientSpan.innerText = recipient;
 		RecipientPage.setSendAmount(masterParams.amount);
+		RecipientPage.setViewCurrency(masterParams.viewCurrency);
 	},
 
 	setSendAmount: function(
@@ -109,4 +110,29 @@ export const RecipientPage = {
 		}
 		amountInput.value = amount.toString();
 	},
+
+	setViewCurrency: function(
+		viewCurrency: SupportedViewCurrency = 'USD',
+		skipPropagation = false,
+	) {
+		let input = document.getElementById('viewCurrency');
+		if(!(input instanceof HTMLSelectElement)) {
+			throw new Error('Could not find select element to set view currency.');
+		}
+		RecipientPage.selectOptionWithValue(input, viewCurrency);
+	},
+
+	selectOptionWithValue: function(
+		selectElement: HTMLSelectElement,
+		value: string
+	) {
+		for(let option of selectElement.options) {
+			if(option.value === value.toUpperCase()) {
+				option.selected = true;
+				return;
+			}
+		}
+		console.warn('Could not find option with value ' + value + ' in list for ',selectElement);
+	},
+
 }
