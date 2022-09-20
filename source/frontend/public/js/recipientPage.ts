@@ -15,7 +15,7 @@ interface MasterParamsWithRecipient extends MasterParams {
 
 const supportedViewCurrencies = ['USD'];
 const supportedSendCurrencies = ['ETH'];
-type SupportedViewCurrency = typeof supportedViewCurrencies[number];
+type SupportedViewCurrency = SupportedSendCurrency | typeof supportedViewCurrencies[number];
 type SupportedSendCurrency = typeof supportedSendCurrencies[number];
 
 export const RecipientPage = {
