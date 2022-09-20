@@ -96,5 +96,17 @@ export const RecipientPage = {
 			throw new Error('Could not find span to set recipient.');
 		}
 		recipientSpan.innerText = recipient;
+		RecipientPage.setSendAmount(masterParams.amount);
+	},
+
+	setSendAmount: function(
+		amount: number | string = 0,
+		skipPropagation = false,
+	) {
+		let amountInput = document.getElementById('sendAmount');
+		if(!(amountInput instanceof HTMLInputElement)) {
+			throw new Error('Could not find input to set sendAmount.');
+		}
+		amountInput.value = amount.toString();
 	},
 }
