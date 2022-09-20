@@ -13,10 +13,10 @@ interface MasterParamsWithRecipient extends MasterParams {
 	recipient : string, //not optional here
 }
 
-const supportedViewCurrencies = ['USD'];
 const supportedSendCurrencies = ['ETH'];
-type SupportedViewCurrency = SupportedSendCurrency | typeof supportedViewCurrencies[number];
+const supportedViewCurrencies = ['USD'];
 type SupportedSendCurrency = typeof supportedSendCurrencies[number];
+type SupportedViewCurrency = SupportedSendCurrency | typeof supportedViewCurrencies[number];
 
 export const RecipientPage = {
 	onPageLoad : function() {
