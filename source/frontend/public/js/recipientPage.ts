@@ -46,9 +46,42 @@ export const RecipientPage = {
 		let recipientPartIndex = 0; //may be different if subdomains are in use per #14
 		let recipient = pathParts[recipientPartIndex];
 		console.log('Recipient is ', recipient, 'pathParts: ',pathParts);
+		let amountOrViewCurrencyIndex = recipientPartIndex + 1;
+		let amountOrViewCurrency = pathParts[amountOrViewCurrencyIndex];
+		let viewCurrency : SupportedViewCurrency | undefined;
+		let sendCurrency : SupportedSendCurrency | undefined;
+		if(RecipientPage.isSupportedViewCurrency(amountOrViewCurrency)) {
+			viewCurrency = amountOrViewCurrency;
+			amountOrViewCurrencyIndex++;
+			amountOrViewCurrency = pathParts[amountOrViewCurrencyIndex];
+		} else if (RecipientPage.isSupportedSendCurrency(amountOrViewCurrency)) {
+			viewCurrency = amountOrViewCurrency;
+			sendCurrency = amountOrViewCurrency;
+			amountOrViewCurrencyIndex++;
+			amountOrViewCurrency = pathParts[amountOrViewCurrencyIndex];
+		}
+		let amount : number | undefined = parseInt(amountOrViewCurrency);
+		if(isNaN(amount)) {
+			amount = undefined;
+		}
 		return {
 			recipient,
+			amount,
+			viewCurrency,
+			sendCurrency,
 		};
+	},
+
+	isSupportedViewCurrency: function(
+		strIn: string
+	) : strIn is SupportedViewCurrency {
+		return supportedViewCurrencies.includes(strIn.toUpperCase());
+	},
+
+	isSupportedSendCurrency: function(
+		strIn: string
+	) : strIn is SupportedSendCurrency {
+		return supportedSendCurrencies.includes(strIn.toUpperCase());
 	},
 
 	showSendPage: function(
