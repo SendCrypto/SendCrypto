@@ -138,7 +138,7 @@ export const RecipientPage = {
 		updateButton();
 		if (MetaMaskOnboarding.isMetaMaskInstalled()) {
 			window.ethereum.on('accountsChanged', (newAccounts) => {
-			accounts = newAccounts;
+			accounts = newAccounts as string[];
 			updateButton();
 			});
 		}
