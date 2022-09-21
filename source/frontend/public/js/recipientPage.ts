@@ -129,9 +129,18 @@ export const RecipientPage = {
 			} else {
 				onboardButton.innerText = 'Click here to connect your blockchain wallet';
 				onboardButton.onclick = async () => {
+					try {
 					await window.ethereum.request({
 					method: 'eth_requestAccounts',
 					});
+					} catch (err: any) {
+						if(err.code === -32002) {
+							onboardButton.innerText = 'A connection request is pending; please open your blockchain wallet to confirm connection.';
+						} else {
+							console.error(err);
+							throw(err);
+						}
+					}
 				};
 			}
 		};
