@@ -113,7 +113,7 @@ export const RecipientPage = {
 
 	setViewCurrency: function(
 		viewCurrency: SupportedViewCurrency = 'USD',
-		skipPropagation = false,
+		skipPropagation = false
 	) {
 		let input = document.getElementById('viewCurrency');
 		if(!(input instanceof HTMLSelectElement)) {
