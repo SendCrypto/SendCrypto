@@ -136,6 +136,7 @@ export const RecipientPage = {
 					} catch (err: any) {
 						if(err.code === -32002) {
 							onboardButton.innerText = 'A connection request is pending; please open your blockchain wallet to confirm connection.';
+							onboardButton.disabled = true;
 						} else {
 							console.error(err);
 							throw(err);
