@@ -127,7 +127,7 @@ export const RecipientPage = {
 				onboardButton.disabled = true;
 				onboarding.stopOnboarding();
 			} else {
-				onboardButton.innerText = 'Connect';
+				onboardButton.innerText = 'Click here to connect your blockchain wallet';
 				onboardButton.onclick = async () => {
 					await window.ethereum.request({
 					method: 'eth_requestAccounts',
