@@ -1,6 +1,6 @@
 
 
-import { MostPages } from "./mostPages.js";
+import { MostPages } from './mostPages.js';
 import MetaMaskOnboarding from '@metamask/onboarding';
 
 interface MasterParams {
