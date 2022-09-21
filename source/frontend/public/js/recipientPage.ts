@@ -104,11 +104,18 @@ export const RecipientPage = {
 		amount: number | string = 0,
 		skipPropagation = false,
 	) {
-		let amountInput = document.getElementById('sendAmount');
-		if(!(amountInput instanceof HTMLInputElement)) {
-			throw new Error('Could not find input to set sendAmount.');
+		RecipientPage.setNumericValue(amount, 'sendAmount');
+	},
+
+	setNumericValue: function(
+		amount: number | string = 0,
+		inputId: string
+	) {
+		let inputElement = document.getElementById(inputId);
+		if(!(inputElement instanceof HTMLInputElement)) {
+			throw new Error('Could not find input #' + inputId + '.');
 		}
-		amountInput.value = amount.toString();
+		inputElement.value = amount.toString();
 	},
 
 	setViewCurrency: function(
