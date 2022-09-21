@@ -111,7 +111,7 @@ export const RecipientPage = {
 		onboardButton: HTMLButtonElement
 	) {
 		const onboarding = new MetaMaskOnboarding();
-		let accounts;
+		let accounts: string[];
 
 		const updateButton = () => {
 			if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
