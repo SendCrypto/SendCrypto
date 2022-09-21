@@ -99,6 +99,10 @@ export const RecipientPage = {
 		RecipientPage.setSendAmount(masterParams.amount);
 		RecipientPage.setViewAmount(masterParams.amount);
 		RecipientPage.setViewCurrency(masterParams.viewCurrency);
+		const signingButton = document.getElementById('signInWallet');
+		if(signingButton === null) {
+			throw new Error('Could not find onboarding button.');
+		}
 	},
 
 	setSendAmount: function(
