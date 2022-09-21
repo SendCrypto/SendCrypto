@@ -97,6 +97,7 @@ export const RecipientPage = {
 		}
 		recipientSpan.innerText = recipient;
 		RecipientPage.setSendAmount(masterParams.amount);
+		RecipientPage.setViewAmount(masterParams.amount);
 		RecipientPage.setViewCurrency(masterParams.viewCurrency);
 	},
 
@@ -105,6 +106,13 @@ export const RecipientPage = {
 		skipPropagation = false,
 	) {
 		RecipientPage.setNumericValue(amount, 'sendAmount');
+	},
+
+	setViewAmount: function(
+		amount: number | string = 0,
+		skipPropagation = false,
+	) {
+		RecipientPage.setNumericValue(amount, 'viewAmount');
 	},
 
 	setNumericValue: function(
