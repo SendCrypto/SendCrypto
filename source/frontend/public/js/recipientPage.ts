@@ -125,7 +125,10 @@ export const RecipientPage = {
 			} else if (accounts && accounts.length > 0) {
 				onboardButton.innerText = 'Sign transaction in wallet!';
 				onboarding.stopOnboarding();
-				onboardButton.disabled = true;
+				onboardButton.disabled = false;
+				onboardButton.onclick = () => {
+					RecipientPage.initiateTransactionFromButton(onboardButton);
+				};
 			} else {
 				onboardButton.innerText = 'Click here to connect your blockchain wallet';
 				onboardButton.onclick = async () => {
@@ -153,6 +156,47 @@ export const RecipientPage = {
 				updateButton();
 			});
 		}
+	},
+
+	initiateTransactionFromButton: function(
+		signButton: HTMLButtonElement
+	) {
+		signButton.innerText = 'Signature pending; please open your blockchain wallet to confirm transaction.';
+		signButton.disabled = true;
+		const sendAmountInput = document.getElementById('sendAmount');
+		if(!(sendAmountInput instanceof HTMLInputElement)) {
+			console.error('Could not find amount input; not sending.');
+			return;
+		}
+		const sendAmountInputValue = sendAmountInput.value;
+		console.log('Amount input value: ' + typeof sendAmountInputValue , sendAmountInputValue);
+		/*
+		initiateTransaction(
+
+		);
+		*/
+	},
+
+	//Adapated from https://docs.metamask.io/guide/ethereum-provider.html#example
+	initiateTransaction: function(
+		toAddress: string,
+		hexValue: string
+	) {
+		ethereum.request({
+			method: 'eth_sendTransaction',
+			params:
+				[{
+					to: toAddress,
+					value: hexValue,
+				}],
+		}).then((result) => {
+			console.log('Got result from sending: ', result);
+			// The result varies by RPC method.
+			// For example, this method will return a transaction hash hexadecimal string on success.
+		}).catch((err: any) => {
+			console.error('Got error from sending: ', err);
+			// If the request fails, the Promise will reject with an error.
+		});
 	},
 
 	setSendAmount: function(
