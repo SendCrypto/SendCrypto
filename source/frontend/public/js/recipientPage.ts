@@ -1,6 +1,7 @@
 
 
 import { MostPages } from "./mostPages.js";
+import MetaMaskOnboarding from '@metamask/onboarding';
 
 interface MasterParams {
 	recipient ?: string,
