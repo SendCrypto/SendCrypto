@@ -100,7 +100,7 @@ export const RecipientPage = {
 		RecipientPage.setViewAmount(masterParams.amount);
 		RecipientPage.setViewCurrency(masterParams.viewCurrency);
 		const signingButton = document.getElementById('signInWallet');
-		if(signingButton === null) {
+		if(!(signingButton instanceof HTMLButtonElement)) {
 			throw new Error('Could not find onboarding button.');
 		}
 	},
