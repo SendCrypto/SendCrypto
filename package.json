@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "@metamask/onboarding": "^1.0.1",
+    "@metamask/providers": "^9.1.0",
     "express": "^4.18.1"
   }
 }
