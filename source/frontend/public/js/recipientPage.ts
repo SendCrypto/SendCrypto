@@ -123,9 +123,9 @@ export const RecipientPage = {
 				onboarding.startOnboarding();
 			};
 			} else if (accounts && accounts.length > 0) {
-				onboardButton.innerText = 'Connected';
-				onboardButton.disabled = true;
+				onboardButton.innerText = 'Sign transaction in wallet!';
 				onboarding.stopOnboarding();
+				onboardButton.disabled = true;
 			} else {
 				onboardButton.innerText = 'Click here to connect your blockchain wallet';
 				onboardButton.onclick = async () => {
