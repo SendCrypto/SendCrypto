@@ -64,7 +64,7 @@ export const RecipientPage = {
 			amountOrViewCurrencyIndex++;
 			amountOrViewCurrency = pathParts[amountOrViewCurrencyIndex];
 		}
-		let amount : number | undefined = parseInt(amountOrViewCurrency);
+		let amount : number | undefined = parseFloat(amountOrViewCurrency);
 		if(isNaN(amount)) {
 			amount = undefined;
 		}
