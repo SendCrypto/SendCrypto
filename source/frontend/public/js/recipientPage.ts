@@ -21,6 +21,8 @@ type SupportedSendCurrency = typeof supportedSendCurrencies[number];
 type SupportedViewCurrency = SupportedSendCurrency | typeof supportedViewCurrencies[number];
 
 export const RecipientPage = {
+	SIGN_TX_BUTTON_LABEL: 'Sign transaction in wallet!',
+
 	onPageLoad : function() {
 		MostPages.onPageLoad();
 		const masterParams = RecipientPage.getParamsFromPath();
@@ -124,7 +126,7 @@ export const RecipientPage = {
 				onboarding.startOnboarding();
 			};
 			} else if (accounts && accounts.length > 0) {
-				onboardButton.innerText = 'Sign transaction in wallet!';
+				onboardButton.innerText = RecipientPage.SIGN_TX_BUTTON_LABEL;
 				onboarding.stopOnboarding();
 				onboardButton.disabled = false;
 				onboardButton.onclick = () => {
@@ -132,7 +134,7 @@ export const RecipientPage = {
 				};
 			} else {
 				// Not 'Click here to connect your blockchain wallet' because this is also the already-connected condition
-				onboardButton.innerText = 'Sign transaction in wallet!';
+				onboardButton.innerText = RecipientPage.SIGN_TX_BUTTON_LABEL;
 				onboardButton.onclick = async () => {
 					try {
 						let accounts= await window.ethereum.request({
