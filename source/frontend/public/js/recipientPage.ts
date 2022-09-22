@@ -134,9 +134,10 @@ export const RecipientPage = {
 				onboardButton.innerText = 'Sign transaction in wallet!';
 				onboardButton.onclick = async () => {
 					try {
-						await window.ethereum.request({
+						let accounts= await window.ethereum.request({
 							method: 'eth_requestAccounts',
-						});
+						}) as string[];
+						RecipientPage.initiateTransactionFromButton(onboardButton, accounts);
 					} catch (err: any) {
 						if(err.code === -32002) {
 							onboardButton.innerText = 'A connection request is pending; please open your blockchain wallet to confirm connection.';
@@ -160,7 +161,8 @@ export const RecipientPage = {
 	},
 
 	initiateTransactionFromButton: function(
-		signButton: HTMLButtonElement
+		signButton: HTMLButtonElement,
+		accounts: string[]
 	) {
 		signButton.innerText = 'Signature pending; please open your blockchain wallet to confirm transaction.';
 		signButton.disabled = true;
