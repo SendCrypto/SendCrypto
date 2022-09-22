@@ -199,7 +199,8 @@ export const RecipientPage = {
 		hexValue: string,
 		from: string
 	) {
-		ethereum.request({
+		try {
+			const result = await ethereum.request({
 			method: 'eth_sendTransaction',
 			params:
 				[{
@@ -207,14 +208,14 @@ export const RecipientPage = {
 					to: toAddress,
 					value: hexValue,
 				}],
-		}).then((result) => {
+			});
 			console.log('Got result from sending: ', result);
 			// The result varies by RPC method.
 			// For example, this method will return a transaction hash hexadecimal string on success.
-		}).catch((err: any) => {
+		} catch(err: any) {
 			console.error('Got error from sending: ', err);
 			// If the request fails, the Promise will reject with an error.
-		});
+		}
 	},
 
 	setSendAmount: function(
