@@ -294,16 +294,17 @@ export const RecipientPage = {
 		if(!(selectList instanceof HTMLSelectElement)) {
 			throw new Error ('Could not find network select list.');
 		}
-		RecipientPage.setOptionsVisibility (
-			selectList,
-			'data-isTest',
-			RecipientPage.getCheckboxValue('showTestNets')
-		);
-		RecipientPage.setOptionsVisibility (
-			selectList,
-			'data-isL2',
-			RecipientPage.getCheckboxValue('showL2s')
-		);
+		const showTestNets = RecipientPage.getCheckboxValue('showTestNets');
+		const showL2s = RecipientPage.getCheckboxValue('showL2s');
+		for(let option of selectList.options) {
+			if(option.hasAttribute('data-isTest') && option.hasAttribute('data-isL2')) {
+				option.hidden = !(showL2s && showTestNets);
+			} else if(option.hasAttribute('data-isTest')) { //L1 test net
+				option.hidden = !(showTestNets);
+			} else if(option.hasAttribute('data-isL2')) { //L2 main net
+				option.hidden = !(showL2s);
+			}
+		}
 	},
 
 	setOptionsVisibility: function(
