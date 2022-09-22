@@ -127,7 +127,7 @@ export const RecipientPage = {
 				onboarding.stopOnboarding();
 				onboardButton.disabled = false;
 				onboardButton.onclick = () => {
-					RecipientPage.initiateTransactionFromButton(onboardButton);
+					RecipientPage.initiateTransactionFromButton(onboardButton, accounts);
 				};
 			} else {
 				onboardButton.innerText = 'Click here to connect your blockchain wallet';
