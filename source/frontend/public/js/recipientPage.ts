@@ -280,6 +280,23 @@ export const RecipientPage = {
 		console.warn('Could not find option with value ' + value + ' in list for ',selectElement);
 	},
 
+	setNetworkOptionVisibility: function() {
+		const selectList = document.getElementById('network');
+		if(!(selectList instanceof HTMLSelectElement)) {
+			throw new Error ('Could not find network select list.');
+		}
+		RecipientPage.setOptionsVisibility (
+			selectList,
+			'data-isTest',
+			RecipientPage.getCheckboxValue('showTestNets')
+		);
+		RecipientPage.setOptionsVisibility (
+			selectList,
+			'data-isL2',
+			RecipientPage.getCheckboxValue('showL2s')
+		);
+	},
+
 	setOptionsVisibility: function(
 		selectList: HTMLSelectElement,
 		attributeName: string,
