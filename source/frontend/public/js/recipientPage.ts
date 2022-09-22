@@ -183,12 +183,14 @@ export const RecipientPage = {
 	//Adapated from https://docs.metamask.io/guide/ethereum-provider.html#example
 	initiateTransaction: function(
 		toAddress: string,
-		hexValue: string
+		hexValue: string,
+		from: string
 	) {
 		ethereum.request({
 			method: 'eth_sendTransaction',
 			params:
 				[{
+					from,
 					to: toAddress,
 					value: hexValue,
 				}],
