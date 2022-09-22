@@ -175,7 +175,7 @@ export const RecipientPage = {
 			return;
 		}
 		const sendAmountInputValue = sendAmountInput.value;
-		const sendAmountInWei = ethers.BigNumber.from(10).pow(18).mul(sendAmountInputValue);
+		const sendAmountInWei = ethers.utils.parseEther(sendAmountInputValue);
 		const recipientAddress = RecipientPage.getRecipientAddress();
 		console.log('Amount input value: ' + typeof sendAmountInputValue , sendAmountInputValue + ' hex: ' + sendAmountInWei.toHexString() + 'recipient: ', recipientAddress);
 		RecipientPage.initiateTransaction(
