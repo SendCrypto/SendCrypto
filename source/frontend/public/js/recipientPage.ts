@@ -280,6 +280,18 @@ export const RecipientPage = {
 		console.warn('Could not find option with value ' + value + ' in list for ',selectElement);
 	},
 
+	setOptionsVisibility: function(
+		selectList: HTMLSelectElement,
+		attributeName: string,
+		shouldBeShown: boolean
+	) {
+		for(let option of selectList.options) {
+			if(option.hasAttribute(attributeName)) {
+				option.hidden = !shouldBeShown;
+			}
+		}
+	},
+
 	getCheckboxValue: function(
 		id: string
 	) {
