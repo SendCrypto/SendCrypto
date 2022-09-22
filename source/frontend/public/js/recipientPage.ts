@@ -163,7 +163,7 @@ export const RecipientPage = {
 		}
 	},
 
-	initiateTransactionFromButton: function(
+	initiateTransactionFromButton: async function(
 		signButton: HTMLButtonElement,
 		accounts: string[]
 	) {
