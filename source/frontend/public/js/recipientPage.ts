@@ -130,7 +130,8 @@ export const RecipientPage = {
 					RecipientPage.initiateTransactionFromButton(onboardButton, accounts);
 				};
 			} else {
-				onboardButton.innerText = 'Click here to connect your blockchain wallet';
+				// Not 'Click here to connect your blockchain wallet' because this is also the already-connected condition
+				onboardButton.innerText = 'Sign transaction in wallet!';
 				onboardButton.onclick = async () => {
 					try {
 						await window.ethereum.request({
