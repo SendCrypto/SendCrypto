@@ -181,7 +181,7 @@ export const RecipientPage = {
 	},
 
 	//Adapated from https://docs.metamask.io/guide/ethereum-provider.html#example
-	initiateTransaction: function(
+	initiateTransaction: async function(
 		toAddress: string,
 		hexValue: string,
 		from: string
