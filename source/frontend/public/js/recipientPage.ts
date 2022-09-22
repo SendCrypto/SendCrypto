@@ -2,6 +2,7 @@
 
 import { MostPages } from './mostPages.js';
 import MetaMaskOnboarding from '@metamask/onboarding';
+import { ethers } from 'ethers';
 
 interface MasterParams {
 	recipient ?: string,
@@ -172,12 +173,24 @@ export const RecipientPage = {
 			return;
 		}
 		const sendAmountInputValue = sendAmountInput.value;
-		console.log('Amount input value: ' + typeof sendAmountInputValue , sendAmountInputValue);
-		/*
-		initiateTransaction(
-
+		const sendAmountInWei = ethers.BigNumber.from(10).pow(18).mul(sendAmountInputValue);
+		const recipientAddress = RecipientPage.getRecipientAddress();
+		console.log('Amount input value: ' + typeof sendAmountInputValue , sendAmountInputValue + ' hex: ' + sendAmountInWei.toHexString() + 'recipient: ', recipientAddress);
+		RecipientPage.initiateTransaction(
+			recipientAddress,
+			sendAmountInWei.toHexString(),
+			accounts[0]
 		);
-		*/
+
+	},
+
+	getRecipientAddress: function() : string {
+		const recipientElement = document.getElementById('recipient');
+		if(recipientElement === null || recipientElement?.textContent === null) {
+			throw new Error('Could not find #recipient element.');
+		} else {
+			return recipientElement.textContent;
+		}
 	},
 
 	//Adapated from https://docs.metamask.io/guide/ethereum-provider.html#example
