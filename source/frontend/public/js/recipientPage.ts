@@ -280,4 +280,14 @@ export const RecipientPage = {
 		console.warn('Could not find option with value ' + value + ' in list for ',selectElement);
 	},
 
+	getCheckboxValue: function(
+		id: string
+	) {
+		let checkbox = document.getElementById(id);
+		if(!(checkbox instanceof HTMLInputElement)) {
+			throw new Error('Could not find checkbox with id ' + id);
+		}
+		return checkbox.checked;
+	},
+
 }
