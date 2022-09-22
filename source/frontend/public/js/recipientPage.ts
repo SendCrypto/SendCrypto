@@ -108,6 +108,15 @@ export const RecipientPage = {
 			throw new Error('Could not find onboarding button.');
 		}
 		RecipientPage.setupMetaMaskOnboarding(signingButton);
+		RecipientPage.setNetworkOptionVisibility();
+		const l2sCheckbox = document.getElementById('showL2s');
+		const testNetsCheckbox = document.getElementById('showTestNets');
+		if(l2sCheckbox instanceof HTMLInputElement && testNetsCheckbox instanceof HTMLInputElement) {
+			l2sCheckbox.addEventListener('change', RecipientPage.setNetworkOptionVisibility);
+			testNetsCheckbox.addEventListener('change', RecipientPage.setNetworkOptionVisibility);
+		} else {
+			console.error('Could not find network option checkboxes; not adding listeners.');
+		}
 	},
 
 	//Adapted from https://docs.metamask.io/guide/onboarding-library.html#using-vanilla-javascript-html
