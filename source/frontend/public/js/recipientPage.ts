@@ -20,6 +20,20 @@ const supportedViewCurrencies = ['USD'];
 type SupportedSendCurrency = typeof supportedSendCurrencies[number];
 type SupportedViewCurrency = SupportedSendCurrency | typeof supportedViewCurrencies[number];
 
+//From https://docs.metamask.io/guide/rpc-api.html#wallet-addethereumchain
+interface AddEthereumChainParameter {
+	chainId: string; // A 0x-prefixed hexadecimal string
+	chainName: string;
+	nativeCurrency: {
+		name: string;
+		symbol: string; // 2-6 characters long
+		decimals: 18;
+	};
+	rpcUrls: string[];
+	blockExplorerUrls?: string[];
+	iconUrls?: string[]; // Currently ignored.
+}
+
 export const RecipientPage = {
 	SIGN_TX_BUTTON_LABEL: 'Sign transaction in wallet!',
 
