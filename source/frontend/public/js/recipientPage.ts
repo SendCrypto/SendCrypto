@@ -178,11 +178,14 @@ export const RecipientPage = {
 		const sendAmountInWei = ethers.utils.parseEther(sendAmountInputValue);
 		const recipientAddress = RecipientPage.getRecipientAddress();
 		console.log('Amount input value: ' + typeof sendAmountInputValue , sendAmountInputValue + ' hex: ' + sendAmountInWei.toHexString() + 'recipient: ', recipientAddress);
-		RecipientPage.initiateTransaction(
+		try {
+			await RecipientPage.initiateTransaction(
 			recipientAddress,
 			sendAmountInWei.toHexString(),
 			accounts[0]
 		);
+		} catch(err: any) {
+		}
 
 	},
 
