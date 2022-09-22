@@ -185,6 +185,11 @@ export const RecipientPage = {
 				accounts[0]
 			);
 		} catch(err: any) {
+			if(err.code === 4001) {
+				//user rejected tx signature request.
+				signButton.disabled = false;
+				signButton.innerText = RecipientPage.SIGN_TX_BUTTON_LABEL;
+			}
 		}
 
 	},
@@ -218,7 +223,10 @@ export const RecipientPage = {
 			// The result varies by RPC method.
 			// For example, this method will return a transaction hash hexadecimal string on success.
 		} catch(err: any) {
+			if(err.code !== 4001) {
 			console.error('Got error from sending: ', err);
+			}
+			throw(err);
 			// If the request fails, the Promise will reject with an error.
 		}
 	},
