@@ -180,10 +180,10 @@ export const RecipientPage = {
 		console.log('Amount input value: ' + typeof sendAmountInputValue , sendAmountInputValue + ' hex: ' + sendAmountInWei.toHexString() + 'recipient: ', recipientAddress);
 		try {
 			await RecipientPage.initiateTransaction(
-			recipientAddress,
-			sendAmountInWei.toHexString(),
-			accounts[0]
-		);
+				recipientAddress,
+				sendAmountInWei.toHexString(),
+				accounts[0]
+			);
 		} catch(err: any) {
 		}
 
