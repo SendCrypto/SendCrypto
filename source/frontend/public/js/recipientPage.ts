@@ -236,12 +236,18 @@ export const RecipientPage = {
 			const provider = new ethers.providers.Web3Provider(window.ethereum);
 			const recipientAddress = await RecipientPage.getRecipientAddressAsDisplayed();
 			const signer = provider.getSigner();
-			await RecipientPage.initiateTransaction(
+			console.log('About to initiate tx.');
+			const tx = await RecipientPage.initiateTransaction(
 				recipientAddress,
 				sendAmountInputValue,
 				accounts[0],
 				signer
 			);
+			console.log('Got Tx: ', tx);
+			signButton.innerText = 'Transaction pending on network';
+			const txResult = await tx;
+			console.log('txResult: ',txResult);
+			signButton.innerText = 'Transaction initially confirmed on network!';
 		} catch(err: any) {
 			if(err.code === 4001) {
 				//user rejected tx signature request.
