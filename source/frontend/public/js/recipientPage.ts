@@ -304,6 +304,7 @@ export const RecipientPage = {
 		});
 		//This point in the code is reached, but if the user
 		//rejects the transaction, the promise never resolves or rejects.
+		//See https://github.com/ethers-io/ethers.js/issues/3189
 		return tx;
 	},
 
