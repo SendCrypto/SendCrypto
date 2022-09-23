@@ -290,7 +290,6 @@ export const RecipientPage = {
 		from: string,
 		signer: ethers.Signer
 	) {
-		try {
 			const tx = signer.sendTransaction({
 				to: toAddress, //can be ENS
 				value: ethers.utils.parseEther(value),
@@ -298,13 +297,6 @@ export const RecipientPage = {
 				gasLimit: 21000
 			});
 			return tx;
-		} catch(err: any) {
-			if(err.code !== 4001) {
-				console.error('Got error from sending: ', err);
-			}
-			throw(err);
-			// If the request fails, the Promise will reject with an error.
-		}
 	},
 
 	setSendAmount: function(
