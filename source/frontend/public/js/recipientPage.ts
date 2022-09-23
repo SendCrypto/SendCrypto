@@ -362,6 +362,7 @@ export const RecipientPage = {
 	},
 
 	//TODO: Load directly from https://github.com/ethereum-lists/chains
+	//adding 'as const' after decimals: 18 or otherwise handling that
 	getChainData(networkOptionValue: string) {
 		switch(networkOptionValue) {
 			case 'ETH':
@@ -377,7 +378,7 @@ export const RecipientPage = {
 					"nativeCurrency": {
 						"name": "Ether",
 						"symbol": "ETH",
-						"decimals": 18
+						"decimals": 18 as const
 					},
 					"infoURL": "https://ethereum.org",
 					"shortName": "eth",
@@ -404,7 +405,7 @@ export const RecipientPage = {
 					"nativeCurrency": {
 						"name": "Görli Ether",
 						"symbol": "ETH",
-						"decimals": 18
+						"decimals": 18 as const
 					},
 					"infoURL": "https://optimism.io",
 					"shortName": "ogor",
@@ -429,7 +430,7 @@ export const RecipientPage = {
 					"nativeCurrency": {
 						"name": "MATIC",
 						"symbol": "MATIC",
-						"decimals": 18
+						"decimals": 18 as const
 					},
 					"infoURL": "https://polygon.technology/",
 					"shortName": "matic",
@@ -458,7 +459,7 @@ export const RecipientPage = {
 					"nativeCurrency": {
 						"name": "MATIC",
 						"symbol": "MATIC",
-						"decimals": 18
+						"decimals": 18 as const
 					},
 					"infoURL": "https://polygon.technology/",
 					"shortName": "maticmum",
@@ -479,7 +480,7 @@ export const RecipientPage = {
 					"nativeCurrency": {
 						"name": "Ether",
 						"symbol": "ETH",
-						"decimals": 18
+						"decimals": 18 as const
 					},
 					"infoURL": "https://optimism.io",
 					"shortName": "oeth",
@@ -500,7 +501,7 @@ export const RecipientPage = {
 					"nativeCurrency": {
 						"name": "Görli Ether",
 						"symbol": "ETH",
-						"decimals": 18
+						"decimals": 18 as const
 					},
 					"infoURL": "https://optimism.io",
 					"shortName": "ogor",
@@ -517,7 +518,7 @@ export const RecipientPage = {
 					"nativeCurrency": {
 						"name": "Kovan Ether",
 						"symbol": "ETH",
-						"decimals": 18
+						"decimals": 18 as const
 					},
 					"explorers": [
 						{
