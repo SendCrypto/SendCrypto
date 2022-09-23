@@ -289,7 +289,7 @@ export const RecipientPage = {
 		value: string,
 		from: string,
 		signer: ethers.Signer
-	) {
+	) : Promise<ethers.providers.TransactionResponse> {
 		const tx = signer.sendTransaction({
 			to: toAddress, //can be ENS
 			value: ethers.utils.parseEther(value),
