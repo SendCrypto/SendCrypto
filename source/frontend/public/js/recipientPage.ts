@@ -262,23 +262,23 @@ export const RecipientPage = {
 	getRecipientAddress: async function(
 		provider: ethers.providers.Provider
 	) : Promise<string> {
-			let displayedRecipient = RecipientPage.getRecipientAddressAsDisplayed();
-			let ethersAddress = displayedRecipient;
-			try {
-				ethersAddress = ethers.utils.getAddress(displayedRecipient);
-				console.log('ethersAddress: ', ethersAddress);
-				return ethersAddress;
-			} catch(err: any) {
-				if(err.code === 'INVALID_ARGUMENT') {
-					const resolvedAddress = await provider.resolveName(displayedRecipient);
-					if(resolvedAddress !== null) {
-						return resolvedAddress;
-					} else {
-						throw new Error('Target address is not a valid Ethereum or ENS address.');
-					}
+		let displayedRecipient = RecipientPage.getRecipientAddressAsDisplayed();
+		let ethersAddress = displayedRecipient;
+		try {
+			ethersAddress = ethers.utils.getAddress(displayedRecipient);
+			console.log('ethersAddress: ', ethersAddress);
+			return ethersAddress;
+		} catch(err: any) {
+			if(err.code === 'INVALID_ARGUMENT') {
+				const resolvedAddress = await provider.resolveName(displayedRecipient);
+				if(resolvedAddress !== null) {
+					return resolvedAddress;
+				} else {
+					throw new Error('Target address is not a valid Ethereum or ENS address.');
 				}
-				throw err;
 			}
+			throw err;
+		}
 	},
 
 	//Adapated from https://docs.metamask.io/guide/ethereum-provider.html#example
