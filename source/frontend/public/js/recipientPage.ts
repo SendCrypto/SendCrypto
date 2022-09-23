@@ -526,4 +526,30 @@ export const RecipientPage = {
 		}
 	},
 
+	async switchToNetwork(chainDetails: AddEthereumChainParameter) {
+		//See https://stackoverflow.com/a/68267546
+		try {
+			// check if the chain to connect to is installed
+			await window.ethereum.request({
+				method: 'wallet_switchEthereumChain',
+				params: [{ chainId: ethers.BigNumber.from(chainDetails.chainId).toHexString() }],
+			});
+		} catch (error: any) {
+			if (error.code === 4902 || error.code === -32603) {
+				//chain not yet added: add it now
+				try {
+				await window.ethereum.request({
+					method: 'wallet_addEthereumChain',
+					params: [chainDetails],
+				});
+				} catch(err) {
+					console.error(err);
+					throw(err);
+				}
+			} else {
+				throw error;
+			}
+		}
+	},
+
 }
