@@ -5,6 +5,12 @@
 body {
 	background-color: #b6ecf6;
 }
+#logoContainer {
+	text-align: center;
+}
+#logo {
+	width: 10em;
+}
 h1, h3, footer {
 	text-align: center;
 }
