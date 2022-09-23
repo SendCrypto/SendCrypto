@@ -352,6 +352,7 @@ export const RecipientPage = {
 			const networkOptionValue = networkPicker.value;
 			const addEthereumChainParameter = RecipientPage.getAddEthereumChainParameter(networkOptionValue);
 			await RecipientPage.switchToNetwork(addEthereumChainParameter);
+			console.log('Connected to ' + networkOptionValue + '.');
 		}
 	},
 
