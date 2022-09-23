@@ -237,7 +237,7 @@ export const RecipientPage = {
 			const recipientAddress = await RecipientPage.getRecipientAddressAsDisplayed();
 			const signer = provider.getSigner();
 			console.log('About to initiate tx.');
-			const tx = await RecipientPage.initiateTransaction(
+			const tx = await RecipientPage.initiateTransactionWithEthers(
 				recipientAddress,
 				sendAmountInputValue,
 				accounts[0],
@@ -290,7 +290,7 @@ export const RecipientPage = {
 	},
 
 	//Adapated from https://docs.metamask.io/guide/ethereum-provider.html#example
-	initiateTransaction: async function(
+	initiateTransactionWithEthers: async function(
 		toAddress: string,
 		value: string,
 		from: string,
