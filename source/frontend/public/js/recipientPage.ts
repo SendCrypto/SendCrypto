@@ -308,7 +308,7 @@ export const RecipientPage = {
 			// For example, this method will return a transaction hash hexadecimal string on success.
 		} catch(err: any) {
 			if(err.code !== 4001) {
-			console.error('Got error from sending: ', err);
+				console.error('Got error from sending: ', err);
 			}
 			throw(err);
 			// If the request fails, the Promise will reject with an error.
