@@ -230,9 +230,9 @@ export const RecipientPage = {
 		}
 		const sendAmountInputValue = sendAmountInput.value;
 		const sendAmountInWei = ethers.utils.parseEther(sendAmountInputValue);
-		const recipientAddress = RecipientPage.getRecipientAddress();
 		try {
 			await RecipientPage.connectToSelectedNetwork();
+			const recipientAddress = RecipientPage.getRecipientAddress();
 			await RecipientPage.initiateTransaction(
 				recipientAddress,
 				sendAmountInWei.toHexString(),
