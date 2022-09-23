@@ -235,12 +235,11 @@ export const RecipientPage = {
 			//@ts-ignore see https://github.com/MetaMask/providers/issues/200
 			const provider = new ethers.providers.Web3Provider(window.ethereum);
 			const recipientAddress = await RecipientPage.getRecipientAddressAsDisplayed();
-			const signer = provider.getSigner();
 			const tx = await RecipientPage.initiateTransactionWithEthers(
 				recipientAddress,
 				sendAmountInputValue,
 				accounts[0],
-				signer
+				provider.getSigner()
 			);
 			signButton.innerText = 'Transaction pending on network';
 			const txResult = await tx;
