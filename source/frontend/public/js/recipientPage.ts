@@ -296,6 +296,8 @@ export const RecipientPage = {
 			from,
 			gasLimit: 21000
 		});
+		//This point in the code is reached, but if the user
+		//rejects the transaction, the promise never resolves or rejects.
 		return tx;
 	},
 
