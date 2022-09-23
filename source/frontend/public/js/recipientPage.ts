@@ -241,6 +241,7 @@ export const RecipientPage = {
 					from,
 					to: toAddress,
 					value: hexValue,
+					gas: 21000, //MetaMask can't estimate on some chains; specifying here doesn't seem to help.
 				}],
 			});
 			console.log('Got result from sending: ', result);
