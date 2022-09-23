@@ -554,7 +554,7 @@ export const RecipientPage = {
 			// check if the chain to connect to is installed
 			await window.ethereum.request({
 				method: 'wallet_switchEthereumChain',
-				params: [{ chainId: ethers.BigNumber.from(chainDetails.chainId).toHexString() }],
+				params: [{ chainId: chainDetails.chainId }],
 			});
 		} catch (error: any) {
 			if (error.code === 4902 || error.code === -32603) {
