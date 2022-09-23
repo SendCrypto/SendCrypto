@@ -241,11 +241,12 @@ export const RecipientPage = {
 				accounts[0],
 				provider.getSigner()
 			);*/
-			await RecipientPage.initiateTransaction(
+			const txCreationResult = await RecipientPage.initiateTransaction(
 				await RecipientPage.getRecipientAddress(provider),
 				sendAmountInWei.toHexString(),
 				accounts[0]
 			);
+			console.log('txCreationResult: ',txCreationResult);
 			signButton.innerText = 'Transaction pending on network';
 			signButton.innerText = 'Transaction initially confirmed on network!';
 		} catch(err: any) {
@@ -307,6 +308,7 @@ export const RecipientPage = {
 				}],
 			});
 			console.log('Got result from sending: ', result);
+			return result;
 			// The result varies by RPC method.
 			// For example, this method will return a transaction hash hexadecimal string on success.
 		} catch(err: any) {
