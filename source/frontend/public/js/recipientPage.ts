@@ -190,7 +190,6 @@ export const RecipientPage = {
 		signButton: HTMLButtonElement,
 		accounts: string[]
 	) {
-		await RecipientPage.connectToSelectedNetwork();
 		signButton.innerText = 'Signature pending; please open your blockchain wallet to confirm transaction.';
 		signButton.disabled = true;
 		const sendAmountInput = document.getElementById('sendAmount');
@@ -203,6 +202,7 @@ export const RecipientPage = {
 		const recipientAddress = RecipientPage.getRecipientAddress();
 		console.log('Amount input value: ' + typeof sendAmountInputValue , sendAmountInputValue + ' hex: ' + sendAmountInWei.toHexString() + 'recipient: ', recipientAddress);
 		try {
+			await RecipientPage.connectToSelectedNetwork();
 			await RecipientPage.initiateTransaction(
 				recipientAddress,
 				sendAmountInWei.toHexString(),
