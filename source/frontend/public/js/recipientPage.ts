@@ -300,7 +300,7 @@ export const RecipientPage = {
 			return tx;
 		} catch(err: any) {
 			if(err.code !== 4001) {
-			console.error('Got error from sending: ', err);
+				console.error('Got error from sending: ', err);
 			}
 			throw(err);
 			// If the request fails, the Promise will reject with an error.
