@@ -232,7 +232,9 @@ export const RecipientPage = {
 		const sendAmountInWei = ethers.utils.parseEther(sendAmountInputValue);
 		try {
 			await RecipientPage.connectToSelectedNetwork();
-			const recipientAddress = RecipientPage.getRecipientAddress();
+			//@ts-ignore see https://github.com/MetaMask/providers/issues/200
+			const provider = new ethers.providers.Web3Provider(window.ethereum);
+			const recipientAddress = await RecipientPage.getRecipientAddress(provider);
 			await RecipientPage.initiateTransaction(
 				recipientAddress,
 				sendAmountInWei.toHexString(),
@@ -248,7 +250,9 @@ export const RecipientPage = {
 
 	},
 
-	getRecipientAddress: function() : string {
+	getRecipientAddress: async function(
+		provider: ethers.providers.Provider
+	) : Promise<string> {
 		const recipientElement = document.getElementById('recipient');
 		if(recipientElement === null || recipientElement?.textContent === null) {
 			throw new Error('Could not find #recipient element.');
