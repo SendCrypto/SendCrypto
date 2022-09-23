@@ -429,34 +429,29 @@ export const RecipientPage = {
 				}
 			case 'Mumbai':
 				return {
-					"name": "Teleport Testnet",
-					"chain": "Teleport",
-					"rpc": ["https://evm-rpc.testnet.teleport.network"],
-					"faucets": ["https://chain-docs.teleport.network/testnet/faucet.html"],
+					"name": "Mumbai",
+					"title": "Polygon Testnet Mumbai",
+					"chain": "Polygon",
+					"rpc": [
+					  "https://matic-mumbai.chainstacklabs.com",
+					  "https://rpc-mumbai.maticvigil.com",
+					  "https://matic-testnet-archive-rpc.bwarelabs.com"
+					],
+					"faucets": ["https://faucet.polygon.technology/"],
 					"nativeCurrency": {
-						"name": "Tele",
-						"symbol": "TELE",
-						"decimals": 18
+					  "name": "MATIC",
+					  "symbol": "MATIC",
+					  "decimals": 18
 					},
-					"infoURL": "https://teleport.network",
-					"shortName": "teleport-testnet",
-					"chainId": 8001,
-					"networkId": 8001,
-					"icon": "teleport",
-					"explorers": [
-						{
-							"name": "Teleport EVM Explorer (Blockscout)",
-							"url": "https://evm-explorer.testnet.teleport.network",
-							"standard": "none",
-							"icon": "teleport"
-						},
-						{
-							"name": "Teleport Cosmos Explorer (Big Dipper)",
-							"url": "https://explorer.testnet.teleport.network",
-							"standard": "none",
-							"icon": "teleport"
-						}
-					]
+					"infoURL": "https://polygon.technology/",
+					"shortName": "maticmum",
+					"chainId": 80001,
+					"networkId": 80001,
+					"explorers": [{
+							"name": "polygonscan",
+							"url": "https://mumbai.polygonscan.com",
+							"standard": "EIP3091"
+					}]
 				}
 			case 'Optimism':
 				return {
