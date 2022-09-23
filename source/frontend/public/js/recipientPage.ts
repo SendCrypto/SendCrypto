@@ -236,14 +236,12 @@ export const RecipientPage = {
 			const provider = new ethers.providers.Web3Provider(window.ethereum);
 			const recipientAddress = await RecipientPage.getRecipientAddressAsDisplayed();
 			const signer = provider.getSigner();
-			console.log('About to initiate tx.');
 			const tx = await RecipientPage.initiateTransactionWithEthers(
 				recipientAddress,
 				sendAmountInputValue,
 				accounts[0],
 				signer
 			);
-			console.log('Got Tx: ', tx);
 			signButton.innerText = 'Transaction pending on network';
 			const txResult = await tx;
 			console.log('txResult: ',txResult);
