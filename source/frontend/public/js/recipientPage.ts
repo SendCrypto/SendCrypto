@@ -234,11 +234,13 @@ export const RecipientPage = {
 			await RecipientPage.connectToSelectedNetwork();
 			//@ts-ignore see https://github.com/MetaMask/providers/issues/200
 			const provider = new ethers.providers.Web3Provider(window.ethereum);
-			const recipientAddress = await RecipientPage.getRecipientAddress(provider);
+			const recipientAddress = await RecipientPage.getRecipientAddressAsDisplayed();
+			const signer = provider.getSigner();
 			await RecipientPage.initiateTransaction(
 				recipientAddress,
-				sendAmountInWei.toHexString(),
-				accounts[0]
+				sendAmountInputValue,
+				accounts[0],
+				signer
 			);
 		} catch(err: any) {
 			if(err.code === 4001) {
@@ -284,23 +286,18 @@ export const RecipientPage = {
 	//Adapated from https://docs.metamask.io/guide/ethereum-provider.html#example
 	initiateTransaction: async function(
 		toAddress: string,
-		hexValue: string,
-		from: string
+		value: string,
+		from: string,
+		signer: ethers.Signer
 	) {
 		try {
-			const result = await ethereum.request({
-			method: 'eth_sendTransaction',
-			params:
-				[{
-					from,
-					to: toAddress,
-					value: hexValue,
-					gas: '0x'+(21000).toString(16), //MetaMask can't estimate on some chains
-				}],
+			const tx = signer.sendTransaction({
+				to: toAddress, //can be ENS
+				value: ethers.utils.parseEther(value),
+				from,
+				gasLimit: 21000
 			});
-			console.log('Got result from sending: ', result);
-			// The result varies by RPC method.
-			// For example, this method will return a transaction hash hexadecimal string on success.
+			return tx;
 		} catch(err: any) {
 			if(err.code !== 4001) {
 			console.error('Got error from sending: ', err);
