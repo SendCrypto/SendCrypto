@@ -234,16 +234,19 @@ export const RecipientPage = {
 			await RecipientPage.connectToSelectedNetwork();
 			//@ts-ignore see https://github.com/MetaMask/providers/issues/200
 			const provider = new ethers.providers.Web3Provider(window.ethereum);
-			const recipientAddress = await RecipientPage.getRecipientAddressAsDisplayed();
+			/* Consider restoring this after debugging why tx rejection doesn't propagate
 			const tx = await RecipientPage.initiateTransactionWithEthers(
-				recipientAddress,
+				RecipientPage.getRecipientAddressAsDisplayed(),
 				sendAmountInputValue,
 				accounts[0],
 				provider.getSigner()
+			);*/
+			await RecipientPage.initiateTransaction(
+				await RecipientPage.getRecipientAddress(provider),
+				sendAmountInWei.toHexString(),
+				accounts[0]
 			);
 			signButton.innerText = 'Transaction pending on network';
-			const txResult = await tx;
-			console.log('txResult: ',txResult);
 			signButton.innerText = 'Transaction initially confirmed on network!';
 		} catch(err: any) {
 			if(err.code === 4001) {
