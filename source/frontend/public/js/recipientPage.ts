@@ -345,14 +345,22 @@ export const RecipientPage = {
 	},
 
 	connectToSelectedNetwork: async function() {
+		const networkOptionValue = RecipientPage.getSelectedNetwork();
+		if(typeof networkOptionValue === 'undefined') {
+			console.error('Cannot find #network selectlist to know which network to connect to.');
+		} else {
+			const addEthereumChainParameter = RecipientPage.getAddEthereumChainParameter(networkOptionValue);
+			await RecipientPage.switchToNetwork(addEthereumChainParameter);
+			console.log('Connected to ' + networkOptionValue + '.');
+		}
+	},
+
+	getSelectedNetwork: function() {
 		const networkPicker = document.getElementById('network');
 		if(!(networkPicker instanceof HTMLSelectElement)) {
 			console.error('Cannot find #network selectlist to know which network to connect to.');
 		} else {
-			const networkOptionValue = networkPicker.value;
-			const addEthereumChainParameter = RecipientPage.getAddEthereumChainParameter(networkOptionValue);
-			await RecipientPage.switchToNetwork(addEthereumChainParameter);
-			console.log('Connected to ' + networkOptionValue + '.');
+			return networkPicker.value;
 		}
 	},
 
