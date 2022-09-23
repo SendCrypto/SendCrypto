@@ -250,14 +250,19 @@ export const RecipientPage = {
 
 	},
 
-	getRecipientAddress: async function(
-		provider: ethers.providers.Provider
-	) : Promise<string> {
+	getRecipientAddressAsDisplayed: function() : string {
 		const recipientElement = document.getElementById('recipient');
 		if(recipientElement === null || recipientElement?.textContent === null) {
 			throw new Error('Could not find #recipient element.');
 		} else {
-			let displayedRecipient = recipientElement.textContent;
+			return recipientElement.textContent;
+		}
+	},
+
+	getRecipientAddress: async function(
+		provider: ethers.providers.Provider
+	) : Promise<string> {
+			let displayedRecipient = RecipientPage.getRecipientAddressAsDisplayed();
 			let ethersAddress = displayedRecipient;
 			try {
 				ethersAddress = ethers.utils.getAddress(displayedRecipient);
@@ -274,7 +279,6 @@ export const RecipientPage = {
 				}
 				throw err;
 			}
-		}
 	},
 
 	//Adapated from https://docs.metamask.io/guide/ethereum-provider.html#example
