@@ -343,4 +343,187 @@ export const RecipientPage = {
 		return checkbox.checked;
 	},
 
+
+	//TODO: Load directly from https://github.com/ethereum-lists/chains
+	getAddEthereumChainParameter(networkOptionValue: string) {
+		switch(networkOptionValue) {
+			case 'ETH':
+				return {
+					"name": "Ethereum Mainnet",
+					"chain": "ETH",
+					"icon": "ethereum",
+					"rpc": [
+						"https://api.mycryptoapi.com/eth",
+						"https://cloudflare-eth.com"
+					],
+					"faucets": [],
+					"nativeCurrency": {
+						"name": "Ether",
+						"symbol": "ETH",
+						"decimals": 18
+					},
+					"infoURL": "https://ethereum.org",
+					"shortName": "eth",
+					"chainId": 1,
+					"networkId": 1,
+					"slip44": 60,
+					"ens": {
+						"registry": "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e"
+					},
+					"explorers": [
+						{
+						"name": "etherscan",
+						"url": "https://etherscan.io",
+						"standard": "EIP3091"
+						}
+					]
+				}
+			case 'Goerli':
+				return {
+					"name": "Optimism Goerli Testnet",
+					"chain": "ETH",
+					"rpc": ["https://goerli.optimism.io/"],
+					"faucets": [],
+					"nativeCurrency": {
+						"name": "Görli Ether",
+						"symbol": "ETH",
+						"decimals": 18
+					},
+					"infoURL": "https://optimism.io",
+					"shortName": "ogor",
+					"chainId": 420,
+					"networkId": 420
+				}
+			//case 'Goerli-alt':
+			//	break;
+			case 'Polygon':
+				return {
+					"name": "Polygon Mainnet",
+					"chain": "Polygon",
+					"rpc": [
+						"https://polygon-rpc.com/",
+						"https://rpc-mainnet.matic.network",
+						"https://matic-mainnet.chainstacklabs.com",
+						"https://rpc-mainnet.maticvigil.com",
+						"https://rpc-mainnet.matic.quiknode.pro",
+						"https://matic-mainnet-full-rpc.bwarelabs.com"
+					],
+					"faucets": [],
+					"nativeCurrency": {
+						"name": "MATIC",
+						"symbol": "MATIC",
+						"decimals": 18
+					},
+					"infoURL": "https://polygon.technology/",
+					"shortName": "matic",
+					"chainId": 137,
+					"networkId": 137,
+					"slip44": 966,
+					"explorers": [
+						{
+						"name": "polygonscan",
+						"url": "https://polygonscan.com",
+						"standard": "EIP3091"
+						}
+					]
+				}
+			case 'Mumbai':
+				return {
+					"name": "Teleport Testnet",
+					"chain": "Teleport",
+					"rpc": ["https://evm-rpc.testnet.teleport.network"],
+					"faucets": ["https://chain-docs.teleport.network/testnet/faucet.html"],
+					"nativeCurrency": {
+						"name": "Tele",
+						"symbol": "TELE",
+						"decimals": 18
+					},
+					"infoURL": "https://teleport.network",
+					"shortName": "teleport-testnet",
+					"chainId": 8001,
+					"networkId": 8001,
+					"icon": "teleport",
+					"explorers": [
+						{
+							"name": "Teleport EVM Explorer (Blockscout)",
+							"url": "https://evm-explorer.testnet.teleport.network",
+							"standard": "none",
+							"icon": "teleport"
+						},
+						{
+							"name": "Teleport Cosmos Explorer (Big Dipper)",
+							"url": "https://explorer.testnet.teleport.network",
+							"standard": "none",
+							"icon": "teleport"
+						}
+					]
+				}
+			case 'Optimism':
+				return {
+					"name": "Optimism",
+					"chain": "ETH",
+					"rpc": ["https://mainnet.optimism.io/"],
+					"faucets": [],
+					"nativeCurrency": {
+						"name": "Ether",
+						"symbol": "ETH",
+						"decimals": 18
+					},
+					"infoURL": "https://optimism.io",
+					"shortName": "oeth",
+					"chainId": 10,
+					"networkId": 10,
+					"explorers": [
+						{
+							"name": "etherscan",
+							"url": "https://optimistic.etherscan.io",
+							"standard": "EIP3091"
+						}
+					]
+				};
+			case 'OptimismGoerli':
+				return {
+					"name": "Optimism Goerli Testnet",
+					"chain": "ETH",
+					"rpc": ["https://goerli.optimism.io/"],
+					"faucets": [],
+					"nativeCurrency": {
+						"name": "Görli Ether",
+						"symbol": "ETH",
+						"decimals": 18
+					},
+					"infoURL": "https://optimism.io",
+					"shortName": "ogor",
+					"chainId": 420,
+					"networkId": 420
+				}
+			case 'OptimismKovan':
+				return {
+					"name": "Optimism Kovan",
+					"title": "Optimism Testnet Kovan",
+					"chain": "ETH",
+					"rpc": ["https://kovan.optimism.io/"],
+					"faucets": ["http://fauceth.komputing.org?chain=69&address=${ADDRESS}"],
+					"nativeCurrency": {
+						"name": "Kovan Ether",
+						"symbol": "ETH",
+						"decimals": 18
+					},
+					"explorers": [
+						{
+						"name": "etherscan",
+						"url": "https://kovan-optimistic.etherscan.io",
+						"standard": "EIP3091"
+						}
+					],
+					"infoURL": "https://optimism.io",
+					"shortName": "okov",
+					"chainId": 69,
+					"networkId": 69
+				};
+			default:
+				throw new Error('Did not recognize network name: ' + networkOptionValue);
+		}
+	},
+
 }
