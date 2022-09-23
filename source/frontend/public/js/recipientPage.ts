@@ -290,6 +290,34 @@ export const RecipientPage = {
 	},
 
 	//Adapated from https://docs.metamask.io/guide/ethereum-provider.html#example
+	initiateTransaction: async function(
+		toAddress: string,
+		hexValue: string,
+		from: string
+	) {
+		try {
+			const result = await ethereum.request({
+			method: 'eth_sendTransaction',
+			params:
+				[{
+					from,
+					to: toAddress,
+					value: hexValue,
+					gas: 21000, //MetaMask can't estimate on some chains; specifying here doesn't seem to help.
+				}],
+			});
+			console.log('Got result from sending: ', result);
+			// The result varies by RPC method.
+			// For example, this method will return a transaction hash hexadecimal string on success.
+		} catch(err: any) {
+			if(err.code !== 4001) {
+			console.error('Got error from sending: ', err);
+			}
+			throw(err);
+			// If the request fails, the Promise will reject with an error.
+		}
+	},
+
 	initiateTransactionWithEthers: async function(
 		toAddress: string,
 		value: string,
