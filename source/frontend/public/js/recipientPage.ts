@@ -190,6 +190,7 @@ export const RecipientPage = {
 		signButton: HTMLButtonElement,
 		accounts: string[]
 	) {
+		await RecipientPage.connectToSelectedNetwork();
 		signButton.innerText = 'Signature pending; please open your blockchain wallet to confirm transaction.';
 		signButton.disabled = true;
 		const sendAmountInput = document.getElementById('sendAmount');
