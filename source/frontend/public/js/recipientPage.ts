@@ -257,7 +257,23 @@ export const RecipientPage = {
 		if(recipientElement === null || recipientElement?.textContent === null) {
 			throw new Error('Could not find #recipient element.');
 		} else {
-			return recipientElement.textContent;
+			let displayedRecipient = recipientElement.textContent;
+			let ethersAddress = displayedRecipient;
+			try {
+				ethersAddress = ethers.utils.getAddress(displayedRecipient);
+				console.log('ethersAddress: ', ethersAddress);
+				return ethersAddress;
+			} catch(err: any) {
+				if(err.code === 'INVALID_ARGUMENT') {
+					const resolvedAddress = await provider.resolveName(displayedRecipient);
+					if(resolvedAddress !== null) {
+						return resolvedAddress;
+					} else {
+						throw new Error('Target address is not a valid Ethereum or ENS address.');
+					}
+				}
+				throw err;
+			}
 		}
 	},
 
