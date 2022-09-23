@@ -131,6 +131,8 @@ export const RecipientPage = {
 		} else {
 			console.error('Could not find network option checkboxes; not adding listeners.');
 		}
+		const networkSelector = document.getElementById('network');
+		networkSelector?.addEventListener('change', RecipientPage.setEthName);
 	},
 
 	//Adapted from https://docs.metamask.io/guide/onboarding-library.html#using-vanilla-javascript-html
@@ -183,6 +185,34 @@ export const RecipientPage = {
 				accounts = newAccounts as string[];
 				updateButton();
 			});
+		}
+	},
+
+	setEthName: function() {
+		const networkOptionValue = RecipientPage.getSelectedNetwork();
+		if(typeof networkOptionValue === 'undefined') {
+			console.error('Cannot find selected network name to set native currency name, not setting it.');
+			return; //without throwing
+		}
+		RecipientPage.getChainData(networkOptionValue);
+		const chainData = RecipientPage.getChainData(networkOptionValue);
+		const ethName = chainData.nativeCurrency.symbol;
+		RecipientPage.setEthNameInList('sendCurrency', ethName);
+		RecipientPage.setEthNameInList('viewCurrency', ethName);
+	},
+
+	setEthNameInList: function(
+		listId: string,
+		ethName: string,
+	) {
+		let list = document.getElementById(listId);
+		if(!(list instanceof HTMLSelectElement)) {
+			throw new Error('Could not find select list with id #' + listId + ' for setting native currency name.');
+		}
+		for(let option of list.options) {
+			if(option.hasAttribute('data-isNative')) {
+				option.innerText = ethName;
+			}
 		}
 	},
 
