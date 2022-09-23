@@ -358,7 +358,7 @@ export const RecipientPage = {
 	getSelectedNetwork: function() {
 		const networkPicker = document.getElementById('network');
 		if(!(networkPicker instanceof HTMLSelectElement)) {
-			console.error('Cannot find #network selectlist to know which network to connect to.');
+			console.error('Cannot find #network selectlist.');
 		} else {
 			return networkPicker.value;
 		}
