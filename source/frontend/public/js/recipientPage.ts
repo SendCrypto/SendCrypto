@@ -343,6 +343,16 @@ export const RecipientPage = {
 		return checkbox.checked;
 	},
 
+	connectToSelectedNetwork: async function() {
+		const networkPicker = document.getElementById('network');
+		if(!(networkPicker instanceof HTMLSelectElement)) {
+			console.error('Cannot find #network selectlist to know which network to connect to.');
+		} else {
+			const networkOptionValue = networkPicker.value;
+			const addEthereumChainParameter = RecipientPage.getAddEthereumChainParameter(networkOptionValue);
+			await RecipientPage.switchToNetwork(addEthereumChainParameter);
+		}
+	},
 
 	getAddEthereumChainParameter(networkOptionValue: string) : AddEthereumChainParameter {
 		let chainData = RecipientPage.getChainData(networkOptionValue);
