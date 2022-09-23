@@ -68,7 +68,9 @@ export const RecipientPage = {
 		let amountOrViewCurrency = pathParts[amountOrViewCurrencyIndex];
 		let viewCurrency : SupportedViewCurrency | undefined;
 		let sendCurrency : SupportedSendCurrency | undefined;
-		if(RecipientPage.isSupportedViewCurrency(amountOrViewCurrency)) {
+		if(typeof amountOrViewCurrency === 'undefined') {
+			//do nothing, but don't throw error when doing checks below
+		} else if(RecipientPage.isSupportedViewCurrency(amountOrViewCurrency)) {
 			viewCurrency = amountOrViewCurrency;
 			amountOrViewCurrencyIndex++;
 			amountOrViewCurrency = pathParts[amountOrViewCurrencyIndex];
