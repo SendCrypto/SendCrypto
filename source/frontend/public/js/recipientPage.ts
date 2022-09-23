@@ -345,7 +345,7 @@ export const RecipientPage = {
 
 
 	//TODO: Load directly from https://github.com/ethereum-lists/chains
-	getAddEthereumChainParameter(networkOptionValue: string) : AddEthereumChainParameter {
+	getChainData(networkOptionValue: string) {
 		switch(networkOptionValue) {
 			case 'ETH':
 				return {
