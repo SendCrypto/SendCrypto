@@ -364,7 +364,8 @@ export const RecipientPage = {
 			}
 		}
 		return {
-			chainId: ethers.BigNumber.from(chainData.chainId).toHexString(), // A 0x-prefixed hexadecimal string
+			//Note: Don't use ethers.BigNumber.from(chainData.chainId).toHexString() as it zero-pads to an even number of nibbles
+			chainId: '0x'+chainData.chainId.toString(16), // A 0x-prefixed hexadecimal string
 			chainName: chainData.name,
 			nativeCurrency: chainData.nativeCurrency,
 			rpcUrls: chainData.rpc,
