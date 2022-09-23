@@ -290,13 +290,13 @@ export const RecipientPage = {
 		from: string,
 		signer: ethers.Signer
 	) {
-			const tx = signer.sendTransaction({
-				to: toAddress, //can be ENS
-				value: ethers.utils.parseEther(value),
-				from,
-				gasLimit: 21000
-			});
-			return tx;
+		const tx = signer.sendTransaction({
+			to: toAddress, //can be ENS
+			value: ethers.utils.parseEther(value),
+			from,
+			gasLimit: 21000
+		});
+		return tx;
 	},
 
 	setSendAmount: function(
