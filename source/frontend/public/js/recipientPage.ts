@@ -344,6 +344,23 @@ export const RecipientPage = {
 	},
 
 
+	getAddEthereumChainParameter(networkOptionValue: string) : AddEthereumChainParameter {
+		let chainData = RecipientPage.getChainData(networkOptionValue);
+		let explorerURLs : string[] = [];
+		if(typeof chainData.explorers !== 'undefined') {
+			for(let explorer of chainData.explorers) {
+				explorerURLs.push(explorer.url);
+			}
+		}
+		return {
+			chainId: ethers.BigNumber.from(chainData.chainId).toHexString(), // A 0x-prefixed hexadecimal string
+			chainName: chainData.name,
+			nativeCurrency: chainData.nativeCurrency,
+			rpcUrls: chainData.rpc,
+			blockExplorerUrls: explorerURLs.length > 0 ? explorerURLs : undefined,
+		}
+	},
+
 	//TODO: Load directly from https://github.com/ethereum-lists/chains
 	getChainData(networkOptionValue: string) {
 		switch(networkOptionValue) {
