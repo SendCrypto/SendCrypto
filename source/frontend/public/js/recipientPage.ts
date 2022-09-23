@@ -63,7 +63,6 @@ export const RecipientPage = {
 		let pathParts = pathname.split('/');
 		let recipientPartIndex = 0; //may be different if subdomains are in use per #14
 		let recipient = pathParts[recipientPartIndex];
-		console.log('Recipient is ', recipient, 'pathParts: ',pathParts);
 		let amountOrViewCurrencyIndex = recipientPartIndex + 1;
 		let amountOrViewCurrency = pathParts[amountOrViewCurrencyIndex];
 		let viewCurrency : SupportedViewCurrency | undefined;
