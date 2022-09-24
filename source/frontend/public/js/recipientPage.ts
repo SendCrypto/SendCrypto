@@ -534,10 +534,9 @@ export const RecipientPage = {
 
 	//TODO: Load directly from https://github.com/ethereum-lists/chains
 	//adding 'as const' after decimals: 18 or otherwise handling that
-	getChainData(networkOptionValue: string) {
-		switch(networkOptionValue) {
-			case 'ETH':
-				return {
+	chainsData: {
+			'ETH':
+				{
 					"name": "Ethereum Mainnet",
 					"chain": "ETH",
 					"icon": "ethereum",
@@ -566,9 +565,9 @@ export const RecipientPage = {
 						"standard": "EIP3091"
 						}
 					]
-				}
-			case 'Goerli':
-				return {
+				},
+			'Goerli':
+				{
 					"name": "Görli",
 					"title": "Ethereum Testnet Görli",
 					"chain": "ETH",
@@ -601,11 +600,11 @@ export const RecipientPage = {
 							"standard": "EIP3091"
 						}
 					]
-				}
+				},
 			//case 'Goerli-alt':
 			//	break;
-			case 'Polygon':
-				return {
+			'Polygon':
+				{
 					"name": "Polygon Mainnet",
 					"chain": "Polygon",
 					"rpc": [
@@ -634,9 +633,9 @@ export const RecipientPage = {
 						"standard": "EIP3091"
 						}
 					]
-				}
-			case 'Mumbai':
-				return {
+				},
+			'Mumbai':
+				{
 					"name": "Mumbai",
 					"title": "Polygon Testnet Mumbai",
 					"chain": "Polygon",
@@ -660,9 +659,9 @@ export const RecipientPage = {
 						"url": "https://mumbai.polygonscan.com",
 						"standard": "EIP3091"
 					}]
-				}
-			case 'Optimism':
-				return {
+				},
+			'Optimism':
+				{
 					"name": "Optimism",
 					"chain": "ETH",
 					"rpc": ["https://mainnet.optimism.io/"],
@@ -681,9 +680,9 @@ export const RecipientPage = {
 						"url": "https://optimistic.etherscan.io",
 						"standard": "EIP3091"
 					}]
-				};
-			case 'OptimismGoerli':
-				return {
+				},
+			'OptimismGoerli':
+				{
 					"name": "Optimism Goerli Testnet",
 					"chain": "ETH",
 					"rpc": ["https://goerli.optimism.io/"],
@@ -697,9 +696,9 @@ export const RecipientPage = {
 					"shortName": "ogor",
 					"chainId": 420,
 					"networkId": 420
-				}
-			case 'OptimismKovan':
-				return {
+				},
+			'OptimismKovan':
+				{
 					"name": "Optimism Kovan",
 					"title": "Optimism Testnet Kovan",
 					"chain": "ETH",
@@ -721,9 +720,9 @@ export const RecipientPage = {
 					"shortName": "okov",
 					"chainId": 69,
 					"networkId": 69
-				};
-			case 'SKALE':
-				return {
+				},
+			'SKALE':
+				{
 					"name": "SKALE",
 					"chain": "ETH",
 					"rpc": ["https://eth-online.skalenodes.com/v1/hackathon-content-live-vega"],
@@ -743,13 +742,13 @@ export const RecipientPage = {
 					"shortName": "skale",
 					"chainId": parseInt('0xf45db2a', 16),
 					"networkId": parseInt('0xf45db2a', 16)
-				};
-			case 'SKALE Testnet':
+				},
+			'SKALE Testnet':
 				//This is as documented at https://docs.skale.network/develop/wallets/metamask
 				//but doesn't work becuase the rpc endpoint doesn't respond to the chain_id request:
 				//"Request for method 'eth_chainId on https://dev-testnet-v1-0.skalelabs.com/ failed."
 				//For that reason, it's commented out of the UI.
-				return {
+				{
 					"name": "SKALE Testnet",
 					"chain": "ETH",
 					"rpc": ["https://dev-testnet-v1-0.skalelabs.com"],
@@ -769,9 +768,15 @@ export const RecipientPage = {
 					"shortName": "skale",
 					"chainId": 344435,
 					"networkId": 344435
-				};
-			default:
-				throw new Error('Did not recognize network name: ' + networkOptionValue);
+				},
+	},
+
+	getChainData(networkOptionValue: string) {
+		let retval = RecipientPage.chainsData[networkOptionValue];
+		if(typeof retval === 'undefined') {
+			throw new Error('Did not recognize network name: ' + networkOptionValue);
+		} else {
+			return retval;
 		}
 	},
 
