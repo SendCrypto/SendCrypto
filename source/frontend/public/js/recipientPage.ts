@@ -408,10 +408,10 @@ export const RecipientPage = {
 		if(!(networkSelector instanceof HTMLSelectElement)) {
 			throw new Error('Could not find network selector on page.');
 		}
+		networkSelector?.addEventListener('change', RecipientPage.setEthName);
 		if(masterParams.network) {
 			RecipientPage.selectOptionWithValue(networkSelector, masterParams.network);
 		}
-		networkSelector?.addEventListener('change', RecipientPage.setEthName);
 	},
 
 	//Adapted from https://docs.metamask.io/guide/onboarding-library.html#using-vanilla-javascript-html
