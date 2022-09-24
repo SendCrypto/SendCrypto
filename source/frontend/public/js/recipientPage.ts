@@ -319,7 +319,7 @@ export const RecipientPage = {
 		toAddress: string,
 		hexValue: string,
 		from: string
-	) {
+	) : Promise<string> {
 		try {
 			const result = await ethereum.request({
 			method: 'eth_sendTransaction',
@@ -331,7 +331,7 @@ export const RecipientPage = {
 					gas: '0x'+(21000).toString(16), //MetaMask can't estimate on some chains
 				}],
 			});
-			return result;
+			return result as string;
 			// The result varies by RPC method.
 			// For example, this method will return a transaction hash hexadecimal string on success.
 		} catch(err: any) {
