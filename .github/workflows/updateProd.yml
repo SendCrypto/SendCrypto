@@ -1,0 +1,16 @@
+name: Update prod site
+
+on:
+  push:
+    branches:
+      - prod
+    paths:
+      - '.github/workflows/**'
+      - 'source/frontend/**'
+jobs:
+  deploy:
+    name: Build & deploy for production
+    uses: ./.github/workflows/buildAndDeployActions.yml
+    secrets:
+      VALIST_DEPLOY_PRIVATE_KEY: ${{ secrets.VALIST_DEPLOY_PRIVATE_KEY }}
+      VALIST_DEPLOY_PROJECT_NAME: sendcrypto
