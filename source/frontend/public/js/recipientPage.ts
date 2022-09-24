@@ -721,6 +721,54 @@ export const RecipientPage = {
 					"chainId": 69,
 					"networkId": 69
 				};
+			case 'SKALE':
+				return {
+					"name": "SKALE",
+					"chain": "ETH",
+					"rpc": ["https://eth-online.skalenodes.com/v1/hackathon-content-live-vega"],
+					"nativeCurrency": {
+						name: "SKALE FUEL",
+						symbol: "sFUEL",
+						decimals: 18 as const
+					},
+					"explorers": [
+						{
+						"name": "block explorer", //just a guess
+						"url": "https://hackathon-content-live-vega.explorer.eth-online.skalenodes.com/",
+						//"standard": "EIP3091" //just a guess
+						}
+					],
+					"infoURL": "https://skale.space",
+					"shortName": "skale",
+					"chainId": parseInt('0xf45db2a', 16),
+					"networkId": parseInt('0xf45db2a', 16)
+				};
+			case 'SKALE Testnet':
+				//This is as documented at https://docs.skale.network/develop/wallets/metamask
+				//but doesn't work becuase the rpc endpoint doesn't respond to the chain_id request:
+				//"Request for method 'eth_chainId on https://dev-testnet-v1-0.skalelabs.com/ failed."
+				//For that reason, it's commented out of the UI.
+				return {
+					"name": "SKALE Testnet",
+					"chain": "ETH",
+					"rpc": ["https://dev-testnet-v1-0.skalelabs.com"],
+					"nativeCurrency": {
+						name: "SKALE FUEL",
+						symbol: "sFUEL",
+						decimals: 18 as const
+					},
+					"explorers": [
+						{
+						"name": "expedition",
+						"url": "https://expedition.dev/?rpcUrl=https://dev-testnet-v1-0.skalelabs.com",
+						//"standard": "EIP3091" //just a guess
+						}
+					],
+					"infoURL": "https://skale.space",
+					"shortName": "skale",
+					"chainId": 344435,
+					"networkId": 344435
+				};
 			default:
 				throw new Error('Did not recognize network name: ' + networkOptionValue);
 		}
