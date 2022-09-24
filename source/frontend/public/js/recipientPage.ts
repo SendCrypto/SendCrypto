@@ -740,7 +740,8 @@ export const RecipientPage = {
 		if(!(networkPicker instanceof HTMLSelectElement)) {
 			console.error('Cannot find #network selectlist.');
 		} else {
-			return networkPicker.value;
+			const retval = networkPicker.value;
+			return retval;
 		}
 	},
 
