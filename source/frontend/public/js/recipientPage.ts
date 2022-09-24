@@ -753,7 +753,7 @@ export const RecipientPage = {
 		}
 	},
 
-	getAddEthereumChainParameter(networkOptionValue: string) : AddEthereumChainParameter {
+	getAddEthereumChainParameter(networkOptionValue: ChainLabel) : AddEthereumChainParameter {
 		let chainData = RecipientPage.getChainData(networkOptionValue);
 		let explorerURLs : string[] = [];
 		if(typeof chainData.explorers !== 'undefined') {
