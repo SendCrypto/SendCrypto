@@ -83,6 +83,26 @@ export const RecipientPage = {
 		if(isNaN(amount)) {
 			amount = undefined;
 		}
+		let urlSearchParams = new URLSearchParams(window.location.search);
+		let urlSearchParamsRecipient = urlSearchParams.get('to');
+		if(urlSearchParamsRecipient !== null) {
+			recipient = urlSearchParamsRecipient;
+		}
+		let urlSearchParamsViewCurrency = urlSearchParams.get('viewCurrency');
+		if(urlSearchParamsViewCurrency !== null && RecipientPage.isSupportedViewCurrency(urlSearchParamsViewCurrency)) {
+			viewCurrency = urlSearchParamsViewCurrency;
+		}
+		let urlSearchParamsSendCurrency = urlSearchParams.get('sendCurrency');
+		if(urlSearchParamsSendCurrency !== null && RecipientPage.isSupportedSendCurrency(urlSearchParamsSendCurrency)) {
+			sendCurrency = urlSearchParamsSendCurrency;
+		}
+		let urlSearchParamsAmount = urlSearchParams.get('amount');
+		if(urlSearchParamsAmount !== null) {
+			let urlSearchParamsAmountFloat = parseFloat(urlSearchParamsAmount);
+			if(!isNaN(urlSearchParamsAmountFloat)) {
+				amount = urlSearchParamsAmountFloat;
+			}
+		}
 		return {
 			recipient,
 			amount,
