@@ -411,6 +411,7 @@ export const RecipientPage = {
 		networkSelector?.addEventListener('change', RecipientPage.setEthName);
 		if(masterParams.network) {
 			RecipientPage.selectOptionWithValue(networkSelector, masterParams.network);
+			RecipientPage.setEthName()
 		}
 	},
 
