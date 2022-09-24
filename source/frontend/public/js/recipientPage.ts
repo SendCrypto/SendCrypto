@@ -273,7 +273,6 @@ export const RecipientPage = {
 		let ethersAddress = displayedRecipient;
 		try {
 			ethersAddress = ethers.utils.getAddress(displayedRecipient);
-			console.log('ethersAddress: ', ethersAddress);
 			return ethersAddress;
 		} catch(err: any) {
 			if(err.code === 'INVALID_ARGUMENT') {
