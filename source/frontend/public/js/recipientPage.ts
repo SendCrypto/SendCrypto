@@ -686,7 +686,7 @@ export const RecipientPage = {
 		value: string
 	) {
 		for(let option of selectElement.options) {
-			if(option.value === value.toUpperCase()) {
+			if(option.value.toUpperCase() === value.toUpperCase()) {
 				option.selected = true;
 				return;
 			}
