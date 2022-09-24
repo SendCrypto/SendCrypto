@@ -95,6 +95,7 @@ export const RecipientPage = {
 		let urlSearchParamsSendCurrency = urlSearchParams.get('sendCurrency');
 		if(urlSearchParamsSendCurrency !== null && RecipientPage.isSupportedSendCurrency(urlSearchParamsSendCurrency)) {
 			sendCurrency = urlSearchParamsSendCurrency;
+			viewCurrency = sendCurrency;
 		}
 		let urlSearchParamsAmount = urlSearchParams.get('amount');
 		if(urlSearchParamsAmount !== null) {
