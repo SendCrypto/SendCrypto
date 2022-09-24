@@ -248,10 +248,11 @@ export const RecipientPage = {
 			signButton.innerText = 'Transaction pending on network';
 			let completedTxDetails = await RecipientPage.waitThrough429s(provider, txHash);
 			signButton.innerText = 'Transaction initially confirmed on network!';
-			if(completedTxDetails.confirmations < 6) {
-				completedTxDetails = await RecipientPage.waitThrough429s(provider, txHash, 6);
+			const confirmationsNeeded = 6; //TODO: Allow recipient to specify
+			if(completedTxDetails.confirmations < confirmationsNeeded) {
+				completedTxDetails = await RecipientPage.waitThrough429s(provider, txHash, confirmationsNeeded);
 			}
-			signButton.innerText = 'Success: Transaction confirmed at least 6x on network!';
+			signButton.innerText = 'Success: Transaction confirmed at least ' + confirmationsNeeded + 'x on network!';
 		} catch(err: any) {
 			if(err.code === 4001) {
 				//user rejected tx signature request.
