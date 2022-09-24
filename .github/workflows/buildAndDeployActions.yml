@@ -5,10 +5,12 @@ on:
     inputs:
       VALIST_DEPLOY_PROJECT_NAME:
         description: 'The Valist project name.'
+        type: string
         required: true
     secrets:
       VALIST_DEPLOY_PRIVATE_KEY:
         description: 'The private key of an account listed as a project administrator in Valist.'
+        type: string
         required: true
 
 jobs:
