@@ -280,12 +280,38 @@ export const RecipientPage = {
 			if(err.code === 'INVALID_ARGUMENT') {
 				const resolvedAddress = await provider.resolveName(displayedRecipient);
 				if(resolvedAddress !== null) {
+					RecipientPage.setAlternativeNameWarning(); //clear this before check
+					let reverseNameLookup = await provider.lookupAddress(resolvedAddress);
+					if(reverseNameLookup !== displayedRecipient) {
+						if(reverseNameLookup === null) {
+							console.warn('Forward ENS lookup succeded, but reverse lookup failed. Will not show name-change warning in UI.');
+						} else {
+							RecipientPage.setAlternativeNameWarning(reverseNameLookup);
+						}
+					}
 					return resolvedAddress;
 				} else {
 					throw new Error('Target address is not a valid Ethereum or ENS address.');
 				}
 			}
 			throw err;
+		}
+	},
+
+	//Pass undefined first param to get rid of the message
+	setAlternativeNameWarning: function(
+		reverseNameLookup?: string
+	) {
+		let messageSpan = document.getElementById('primaryENSDiffers');
+		let otherNameSpan = document.getElementById('primaryENS');
+		if(messageSpan === null || otherNameSpan === null) {
+			throw new Error('Cannot find elements needed to show alternative name warning.');
+		}
+		if(typeof reverseNameLookup === 'undefined') {
+			messageSpan.style.display = 'none';
+		} else {
+			otherNameSpan.innerHTML = reverseNameLookup;
+			messageSpan.style.display = 'inline';
 		}
 	},
 

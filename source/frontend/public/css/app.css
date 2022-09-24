@@ -18,6 +18,9 @@ h1, h3, footer {
 	display: none;
 	text-align: center;
 }
+#primaryENSDiffers {
+	display: none;
+}
 hr {
 	width: 90%;
 	border-color: #1669ab;
