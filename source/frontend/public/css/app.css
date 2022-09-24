@@ -25,3 +25,6 @@ hr {
 	width: 90%;
 	border-color: #1669ab;
 }
+.italic {
+	font-style: italic;
+}
