@@ -263,6 +263,7 @@ const CHAINS_DATA = {
 		"networkId": 344435
 	},
 }
+type ChainLabel = keyof typeof CHAINS_DATA;
 
 export const RecipientPage = {
 	SIGN_TX_BUTTON_LABEL: 'Sign transaction in wallet!',
@@ -450,6 +451,10 @@ export const RecipientPage = {
 		const ethName = chainData.nativeCurrency.symbol;
 		RecipientPage.setEthNameInList('sendCurrency', ethName);
 		RecipientPage.setEthNameInList('viewCurrency', ethName);
+	},
+
+	isRecognizedChainLabel: function(chainLabelString: string) : chainLabelString is ChainLabel {
+		return Object.keys(CHAINS_DATA).includes(chainLabelString);
 	},
 
 	setEthNameInList: function(
@@ -741,6 +746,9 @@ export const RecipientPage = {
 			console.error('Cannot find #network selectlist.');
 		} else {
 			const retval = networkPicker.value;
+			if(!RecipientPage.isRecognizedChainLabel(retval)) {
+				throw new Error('Did not recognize selected network ' + retval);
+			}
 			return retval;
 		}
 	},
