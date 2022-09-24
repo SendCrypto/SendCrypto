@@ -246,10 +246,9 @@ export const RecipientPage = {
 				accounts[0]
 			);
 			signButton.innerText = 'Transaction pending on network';
-			let completedTxDetails = await provider.waitForTransaction(txHash);
+			let completedTxDetails = await RecipientPage.waitThrough429s(provider, txHash);
 			signButton.innerText = 'Transaction initially confirmed on network!';
-			console.log('Successfully transferred from ' + completedTxDetails.from + ' to ' + completedTxDetails.to + '. Other details: ', completedTxDetails);
-			completedTxDetails = await provider.waitForTransaction(txHash, 6);
+			completedTxDetails = await RecipientPage.waitThrough429s(provider, txHash, 6);
 			signButton.innerText = 'Success: Transaction confirmed at least 6x on network!';
 		} catch(err: any) {
 			if(err.code === 4001) {
@@ -258,7 +257,25 @@ export const RecipientPage = {
 				signButton.innerText = RecipientPage.SIGN_TX_BUTTON_LABEL;
 			}
 		}
+	},
 
+	waitThrough429s: async function(
+		provider: ethers.providers.Web3Provider,
+		txHash: string,
+		desiredConfirmations?: number
+	) : Promise<ethers.providers.TransactionReceipt> {
+		try {
+			let completedTxDetails = await provider.waitForTransaction(txHash, desiredConfirmations);
+			console.log('Successfully transferred from ' + completedTxDetails.from + ' to ' + completedTxDetails.to + '. Other details: ', completedTxDetails);
+			return completedTxDetails;
+		} catch(err: any) {
+			if(err.code === -32603 && err.message.includes('429')) {
+				console.warn('Got a 429 error when checking for status of tx ' + txHash + ': ' + err.message + '; will retry.');
+				return RecipientPage.waitThrough429s(provider, txHash, desiredConfirmations);
+			} else {
+				throw err;
+			}
+		}
 	},
 
 	getRecipientAddressAsDisplayed: function() : string {
