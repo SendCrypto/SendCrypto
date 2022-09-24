@@ -240,7 +240,7 @@ export const RecipientPage = {
 				accounts[0],
 				provider.getSigner()
 			);*/
-			const txCreationResult = await RecipientPage.initiateTransaction(
+			const txHash = await RecipientPage.initiateTransaction(
 				await RecipientPage.getRecipientAddress(provider),
 				sendAmountInWei.toHexString(),
 				accounts[0]
