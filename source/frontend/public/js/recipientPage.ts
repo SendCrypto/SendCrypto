@@ -246,7 +246,11 @@ export const RecipientPage = {
 				accounts[0]
 			);
 			signButton.innerText = 'Transaction pending on network';
+			let completedTxDetails = await provider.waitForTransaction(txHash);
 			signButton.innerText = 'Transaction initially confirmed on network!';
+			console.log('Successfully transferred from ' + completedTxDetails.from + ' to ' + completedTxDetails.to + '. Other details: ', completedTxDetails);
+			completedTxDetails = await provider.waitForTransaction(txHash, 6);
+			signButton.innerText = 'Success: Transaction confirmed at least 6x on network!';
 		} catch(err: any) {
 			if(err.code === 4001) {
 				//user rejected tx signature request.
