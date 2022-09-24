@@ -1,0 +1,12 @@
+name: Build and Publish on Valist
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: valist-io/valist-github-action@v2.5.6
+        with:
+          private-key: ${{ secrets.VALIST_DEPLOY_PRIVATE_KEY }}
+          account: sendcrypto
+          project:  ${{ secrets.VALIST_DEPLOY_PROJECT_NAME }}
+          release: ${{ github.ref_name }} # this can be whatever tag you wish to use
+          path: build
