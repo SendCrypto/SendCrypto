@@ -535,8 +535,7 @@ export const RecipientPage = {
 	//TODO: Load directly from https://github.com/ethereum-lists/chains
 	//adding 'as const' after decimals: 18 or otherwise handling that
 	chainsData: {
-		'ETH':
-			{
+		'ETH': {
 				"name": "Ethereum Mainnet",
 				"chain": "ETH",
 				"icon": "ethereum",
@@ -566,8 +565,7 @@ export const RecipientPage = {
 					}
 				]
 			},
-		'Goerli':
-			{
+		'Goerli': {
 				"name": "Görli",
 				"title": "Ethereum Testnet Görli",
 				"chain": "ETH",
@@ -603,8 +601,7 @@ export const RecipientPage = {
 			},
 		//case 'Goerli-alt':
 		//	break;
-		'Polygon':
-			{
+		'Polygon': {
 				"name": "Polygon Mainnet",
 				"chain": "Polygon",
 				"rpc": [
@@ -634,8 +631,7 @@ export const RecipientPage = {
 					}
 				]
 			},
-		'Mumbai':
-			{
+		'Mumbai': {
 				"name": "Mumbai",
 				"title": "Polygon Testnet Mumbai",
 				"chain": "Polygon",
@@ -660,8 +656,7 @@ export const RecipientPage = {
 					"standard": "EIP3091"
 				}]
 			},
-		'Optimism':
-			{
+		'Optimism': {
 				"name": "Optimism",
 				"chain": "ETH",
 				"rpc": ["https://mainnet.optimism.io/"],
@@ -681,8 +676,7 @@ export const RecipientPage = {
 					"standard": "EIP3091"
 				}]
 			},
-		'OptimismGoerli':
-			{
+		'OptimismGoerli': {
 				"name": "Optimism Goerli Testnet",
 				"chain": "ETH",
 				"rpc": ["https://goerli.optimism.io/"],
@@ -697,8 +691,7 @@ export const RecipientPage = {
 				"chainId": 420,
 				"networkId": 420
 			},
-		'OptimismKovan':
-			{
+		'OptimismKovan': {
 				"name": "Optimism Kovan",
 				"title": "Optimism Testnet Kovan",
 				"chain": "ETH",
@@ -721,8 +714,7 @@ export const RecipientPage = {
 				"chainId": 69,
 				"networkId": 69
 			},
-		'SKALE':
-			{
+		'SKALE': {
 				"name": "SKALE",
 				"chain": "ETH",
 				"rpc": ["https://eth-online.skalenodes.com/v1/hackathon-content-live-vega"],
@@ -743,12 +735,11 @@ export const RecipientPage = {
 				"chainId": parseInt('0xf45db2a', 16),
 				"networkId": parseInt('0xf45db2a', 16)
 			},
-		'SKALE Testnet':
+		'SKALE Testnet': {
 			//This is as documented at https://docs.skale.network/develop/wallets/metamask
 			//but doesn't work becuase the rpc endpoint doesn't respond to the chain_id request:
 			//"Request for method 'eth_chainId on https://dev-testnet-v1-0.skalelabs.com/ failed."
 			//For that reason, it's commented out of the UI.
-			{
 				"name": "SKALE Testnet",
 				"chain": "ETH",
 				"rpc": ["https://dev-testnet-v1-0.skalelabs.com"],
