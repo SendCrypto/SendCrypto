@@ -245,7 +245,6 @@ export const RecipientPage = {
 				sendAmountInWei.toHexString(),
 				accounts[0]
 			);
-			console.log('txCreationResult: ',txCreationResult);
 			signButton.innerText = 'Transaction pending on network';
 			signButton.innerText = 'Transaction initially confirmed on network!';
 		} catch(err: any) {
@@ -332,7 +331,6 @@ export const RecipientPage = {
 					gas: '0x'+(21000).toString(16), //MetaMask can't estimate on some chains
 				}],
 			});
-			console.log('Got result from sending: ', result);
 			return result;
 			// The result varies by RPC method.
 			// For example, this method will return a transaction hash hexadecimal string on success.
