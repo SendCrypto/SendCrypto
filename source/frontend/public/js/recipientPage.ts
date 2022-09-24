@@ -188,6 +188,11 @@ const CHAINS_DATA = {
 			"symbol": "ETH",
 			"decimals": 18 as const
 		},
+		explorers: [{
+			"name": "Block scout", //just a guess
+			"url": "https://blockscout.com/optimism/goerli/",
+			//"standard": "EIP3091" //just a guess
+		}],
 		"infoURL": "https://optimism.io",
 		"shortName": "ogor",
 		"chainId": 420,
