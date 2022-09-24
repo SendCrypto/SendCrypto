@@ -22,10 +22,7 @@
 				<li>Start with "https://".</li>
 				<li>
 					Follow that with your preferred base domain: "sendcrypto.money" or "sendcryptoto.me" or "sendcryptocurrencyto.me".
-					If your audience uses <a href="https://brave.com/download/" target="_blank">Brave</a> or
-					<a href="https://www.opera.com/download" target="_blank">Opera</a> or the
-					<a href="https://unstoppabledomains.com/extension" target="_blank">Unstoppable Domains extension</a>,
-					you can also pick "quicklysend.crypto" (and you are welcome to pick differently depending on your audience).
+					(Note that you are welcome to pick differently depending on your audience).
 				</li>
 				<li>Follow that with a slash: "/".</li>
 				<li>
@@ -56,6 +53,46 @@
 			Any "/" at the end of a URL (in this application) is optional.
 			<br>
 			For example: If you find this site useful, please <a href="/0x46438f69ab55D8f29956b6A2B45c9b6f3Fa6332c">click here to send your support</a>.
+		</p>
+		<p>
+			A more decentralized alternative for building the link, which can be used if your audience uses
+			<a href="https://brave.com/download/" target="_blank">Brave</a> or
+			<a href="https://www.opera.com/download" target="_blank">Opera</a> or the
+			<a href="https://unstoppabledomains.com/extension" target="_blank">Unstoppable Domains extension</a>
+			is as follows, always excluding quotes:
+			<ul>
+				<li>Start with "https://".</li>
+				<li>
+					Follow that with your preferred base domain: "quicklysend.crypto" or "sendquickly.crypto" or "sendmoneyon.blockchain" or "sendfundson.blockchain".
+				</li>
+				<li>Follow that with "?to=".</li>
+				<li>
+					Follow that with the address or
+					ENS name
+					of the account that should receive the funds.
+					For example: "0x46438f69ab55D8f29956b6A2B45c9b6f3Fa6332c".
+					You can't yet use your own Unstoppable Domain name, but that should change in the future.
+				</li>
+				<li>
+					If you are going to specify an amount, optionally follow that with: "&viewCurrency="
+					followed by the type of currency you would like to specify an amount in, which currently must be "ETH".
+					You will eventually be able to specify the amount in "USD" or any of the cryptocurrency tokens noted below.
+					This is not case-sensitive.
+					If you do not specify anything here, USD will be assumed.
+				</li>
+				<li>
+					If you wish to specify an amount, add "&amount=" followed by the amount.
+				</li>
+				<li>
+					If you wish to specify the cryptocurrency asset that should be specified by default,
+					if a user has holdings in multiple supported cryptocurrencies, add "&sendCurrency=" followed by the unit.
+					Currently, options are just "ETH", which is the default assumed if no value is present.
+					This is not case-sensitive.
+				</li>
+			</ul>
+			For example: If you find this site useful, please <a href="?to=0x46438f69ab55D8f29956b6A2B45c9b6f3Fa6332c">click here to send your support</a>.
+			<br>
+			Note: This strategy of using GET parameters can also be used with traditional domains; any GET parameters will override URL parameters if both are present.
 		</p>
 		<p>
 			If you want to convert the text link into a QR code that you can post somewhere,
