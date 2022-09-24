@@ -34,6 +34,236 @@ interface AddEthereumChainParameter {
 	iconUrls?: string[]; // Currently ignored.
 }
 
+//TODO: Load directly from https://github.com/ethereum-lists/chains
+//adding 'as const' after decimals: 18 or otherwise handling that
+const CHAINS_DATA = {
+	'ETH': {
+		"name": "Ethereum Mainnet",
+		"chain": "ETH",
+		"icon": "ethereum",
+		"rpc": [
+			"https://api.mycryptoapi.com/eth",
+			"https://cloudflare-eth.com"
+		],
+		"faucets": [],
+		"nativeCurrency": {
+			"name": "Ether",
+			"symbol": "ETH",
+			"decimals": 18 as const
+		},
+		"infoURL": "https://ethereum.org",
+		"shortName": "eth",
+		"chainId": 1,
+		"networkId": 1,
+		"slip44": 60,
+		"ens": {
+			"registry": "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e"
+		},
+		"explorers": [
+			{
+			"name": "etherscan",
+			"url": "https://etherscan.io",
+			"standard": "EIP3091"
+			}
+		]
+	},
+	'Goerli': {
+		"name": "Görli",
+		"title": "Ethereum Testnet Görli",
+		"chain": "ETH",
+		"rpc": [
+			"https://goerli.infura.io/v3/${INFURA_API_KEY}",
+			"wss://goerli.infura.io/v3/${INFURA_API_KEY}",
+			"https://rpc.goerli.mudit.blog/"
+		],
+		"faucets": [
+			"http://fauceth.komputing.org?chain=5&address=${ADDRESS}",
+			"https://goerli-faucet.slock.it?address=${ADDRESS}",
+			"https://faucet.goerli.mudit.blog"
+		],
+		"nativeCurrency": {
+			"name": "Görli Ether",
+			"symbol": "ETH",
+			"decimals": 18 as const
+		},
+		"infoURL": "https://goerli.net/#about",
+		"shortName": "gor",
+		"chainId": 5,
+		"networkId": 5,
+		"ens": {
+			"registry": "0x112234455c3a32fd11230c42e7bccd4a84e02010"
+		},
+		"explorers": [
+			{
+				"name": "etherscan-goerli",
+				"url": "https://goerli.etherscan.io",
+				"standard": "EIP3091"
+			}
+		]
+	},
+	//case 'Goerli-alt':
+	//	break;
+	'Polygon': {
+		"name": "Polygon Mainnet",
+		"chain": "Polygon",
+		"rpc": [
+			"https://polygon-rpc.com/",
+			"https://rpc-mainnet.matic.network",
+			"https://matic-mainnet.chainstacklabs.com",
+			"https://rpc-mainnet.maticvigil.com",
+			"https://rpc-mainnet.matic.quiknode.pro",
+			"https://matic-mainnet-full-rpc.bwarelabs.com"
+		],
+		"faucets": [],
+		"nativeCurrency": {
+			"name": "MATIC",
+			"symbol": "MATIC",
+			"decimals": 18 as const
+		},
+		"infoURL": "https://polygon.technology/",
+		"shortName": "matic",
+		"chainId": 137,
+		"networkId": 137,
+		"slip44": 966,
+		"explorers": [
+			{
+			"name": "polygonscan",
+			"url": "https://polygonscan.com",
+			"standard": "EIP3091"
+			}
+		]
+	},
+	'Mumbai': {
+		"name": "Mumbai",
+		"title": "Polygon Testnet Mumbai",
+		"chain": "Polygon",
+		"rpc": [
+			"https://matic-mumbai.chainstacklabs.com",
+			"https://rpc-mumbai.maticvigil.com",
+			"https://matic-testnet-archive-rpc.bwarelabs.com"
+		],
+		"faucets": ["https://faucet.polygon.technology/"],
+		"nativeCurrency": {
+			"name": "MATIC",
+			"symbol": "MATIC",
+			"decimals": 18 as const
+		},
+		"infoURL": "https://polygon.technology/",
+		"shortName": "maticmum",
+		"chainId": 80001,
+		"networkId": 80001,
+		"explorers": [{
+			"name": "polygonscan",
+			"url": "https://mumbai.polygonscan.com",
+			"standard": "EIP3091"
+		}]
+	},
+	'Optimism': {
+		"name": "Optimism",
+		"chain": "ETH",
+		"rpc": ["https://mainnet.optimism.io/"],
+		"faucets": [],
+		"nativeCurrency": {
+			"name": "Ether",
+			"symbol": "ETH",
+			"decimals": 18 as const
+		},
+		"infoURL": "https://optimism.io",
+		"shortName": "oeth",
+		"chainId": 10,
+		"networkId": 10,
+		"explorers": [{
+			"name": "etherscan",
+			"url": "https://optimistic.etherscan.io",
+			"standard": "EIP3091"
+		}]
+	},
+	'OptimismGoerli': {
+		"name": "Optimism Goerli Testnet",
+		"chain": "ETH",
+		"rpc": ["https://goerli.optimism.io/"],
+		"faucets": [],
+		"nativeCurrency": {
+			"name": "Görli Ether",
+			"symbol": "ETH",
+			"decimals": 18 as const
+		},
+		"infoURL": "https://optimism.io",
+		"shortName": "ogor",
+		"chainId": 420,
+		"networkId": 420
+	},
+	'OptimismKovan': {
+		"name": "Optimism Kovan",
+		"title": "Optimism Testnet Kovan",
+		"chain": "ETH",
+		"rpc": ["https://kovan.optimism.io/"],
+		"faucets": ["http://fauceth.komputing.org?chain=69&address=${ADDRESS}"],
+		"nativeCurrency": {
+			"name": "Kovan Ether",
+			"symbol": "ETH",
+			"decimals": 18 as const
+		},
+		"explorers": [
+			{
+			"name": "etherscan",
+			"url": "https://kovan-optimistic.etherscan.io",
+			"standard": "EIP3091"
+			}
+		],
+		"infoURL": "https://optimism.io",
+		"shortName": "okov",
+		"chainId": 69,
+		"networkId": 69
+	},
+	'SKALE': {
+		"name": "SKALE",
+		"chain": "ETH",
+		"rpc": ["https://eth-online.skalenodes.com/v1/hackathon-content-live-vega"],
+		"nativeCurrency": {
+			name: "SKALE FUEL",
+			symbol: "sFUEL",
+			decimals: 18 as const
+		},
+		"explorers": [
+			{
+			"name": "block explorer", //just a guess
+			"url": "https://hackathon-content-live-vega.explorer.eth-online.skalenodes.com/",
+			//"standard": "EIP3091" //just a guess
+			}
+		],
+		"infoURL": "https://skale.space",
+		"shortName": "skale",
+		"chainId": parseInt('0xf45db2a', 16),
+		"networkId": parseInt('0xf45db2a', 16)
+	},
+	'SKALE Testnet': {
+	//This is as documented at https://docs.skale.network/develop/wallets/metamask
+	//but doesn't work becuase the rpc endpoint doesn't respond to the chain_id request:
+	//"Request for method 'eth_chainId on https://dev-testnet-v1-0.skalelabs.com/ failed."
+	//For that reason, it's commented out of the UI.
+		"name": "SKALE Testnet",
+		"chain": "ETH",
+		"rpc": ["https://dev-testnet-v1-0.skalelabs.com"],
+		"nativeCurrency": {
+			name: "SKALE FUEL",
+			symbol: "sFUEL",
+			decimals: 18 as const
+		},
+		"explorers": [
+			{
+			"name": "expedition",
+			"url": "https://expedition.dev/?rpcUrl=https://dev-testnet-v1-0.skalelabs.com",
+			//"standard": "EIP3091" //just a guess
+			}
+		],
+		"infoURL": "https://skale.space",
+		"shortName": "skale",
+		"chainId": 344435,
+		"networkId": 344435
+	},
+}
+
 export const RecipientPage = {
 	SIGN_TX_BUTTON_LABEL: 'Sign transaction in wallet!',
 
@@ -532,238 +762,8 @@ export const RecipientPage = {
 		}
 	},
 
-	//TODO: Load directly from https://github.com/ethereum-lists/chains
-	//adding 'as const' after decimals: 18 or otherwise handling that
-	chainsData: {
-		'ETH': {
-			"name": "Ethereum Mainnet",
-			"chain": "ETH",
-			"icon": "ethereum",
-			"rpc": [
-				"https://api.mycryptoapi.com/eth",
-				"https://cloudflare-eth.com"
-			],
-			"faucets": [],
-			"nativeCurrency": {
-				"name": "Ether",
-				"symbol": "ETH",
-				"decimals": 18 as const
-			},
-			"infoURL": "https://ethereum.org",
-			"shortName": "eth",
-			"chainId": 1,
-			"networkId": 1,
-			"slip44": 60,
-			"ens": {
-				"registry": "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e"
-			},
-			"explorers": [
-				{
-				"name": "etherscan",
-				"url": "https://etherscan.io",
-				"standard": "EIP3091"
-				}
-			]
-		},
-		'Goerli': {
-			"name": "Görli",
-			"title": "Ethereum Testnet Görli",
-			"chain": "ETH",
-			"rpc": [
-				"https://goerli.infura.io/v3/${INFURA_API_KEY}",
-				"wss://goerli.infura.io/v3/${INFURA_API_KEY}",
-				"https://rpc.goerli.mudit.blog/"
-			],
-			"faucets": [
-				"http://fauceth.komputing.org?chain=5&address=${ADDRESS}",
-				"https://goerli-faucet.slock.it?address=${ADDRESS}",
-				"https://faucet.goerli.mudit.blog"
-			],
-			"nativeCurrency": {
-				"name": "Görli Ether",
-				"symbol": "ETH",
-				"decimals": 18 as const
-			},
-			"infoURL": "https://goerli.net/#about",
-			"shortName": "gor",
-			"chainId": 5,
-			"networkId": 5,
-			"ens": {
-				"registry": "0x112234455c3a32fd11230c42e7bccd4a84e02010"
-			},
-			"explorers": [
-				{
-					"name": "etherscan-goerli",
-					"url": "https://goerli.etherscan.io",
-					"standard": "EIP3091"
-				}
-			]
-		},
-		//case 'Goerli-alt':
-		//	break;
-		'Polygon': {
-			"name": "Polygon Mainnet",
-			"chain": "Polygon",
-			"rpc": [
-				"https://polygon-rpc.com/",
-				"https://rpc-mainnet.matic.network",
-				"https://matic-mainnet.chainstacklabs.com",
-				"https://rpc-mainnet.maticvigil.com",
-				"https://rpc-mainnet.matic.quiknode.pro",
-				"https://matic-mainnet-full-rpc.bwarelabs.com"
-			],
-			"faucets": [],
-			"nativeCurrency": {
-				"name": "MATIC",
-				"symbol": "MATIC",
-				"decimals": 18 as const
-			},
-			"infoURL": "https://polygon.technology/",
-			"shortName": "matic",
-			"chainId": 137,
-			"networkId": 137,
-			"slip44": 966,
-			"explorers": [
-				{
-				"name": "polygonscan",
-				"url": "https://polygonscan.com",
-				"standard": "EIP3091"
-				}
-			]
-		},
-		'Mumbai': {
-			"name": "Mumbai",
-			"title": "Polygon Testnet Mumbai",
-			"chain": "Polygon",
-			"rpc": [
-				"https://matic-mumbai.chainstacklabs.com",
-				"https://rpc-mumbai.maticvigil.com",
-				"https://matic-testnet-archive-rpc.bwarelabs.com"
-			],
-			"faucets": ["https://faucet.polygon.technology/"],
-			"nativeCurrency": {
-				"name": "MATIC",
-				"symbol": "MATIC",
-				"decimals": 18 as const
-			},
-			"infoURL": "https://polygon.technology/",
-			"shortName": "maticmum",
-			"chainId": 80001,
-			"networkId": 80001,
-			"explorers": [{
-				"name": "polygonscan",
-				"url": "https://mumbai.polygonscan.com",
-				"standard": "EIP3091"
-			}]
-		},
-		'Optimism': {
-			"name": "Optimism",
-			"chain": "ETH",
-			"rpc": ["https://mainnet.optimism.io/"],
-			"faucets": [],
-			"nativeCurrency": {
-				"name": "Ether",
-				"symbol": "ETH",
-				"decimals": 18 as const
-			},
-			"infoURL": "https://optimism.io",
-			"shortName": "oeth",
-			"chainId": 10,
-			"networkId": 10,
-			"explorers": [{
-				"name": "etherscan",
-				"url": "https://optimistic.etherscan.io",
-				"standard": "EIP3091"
-			}]
-		},
-		'OptimismGoerli': {
-			"name": "Optimism Goerli Testnet",
-			"chain": "ETH",
-			"rpc": ["https://goerli.optimism.io/"],
-			"faucets": [],
-			"nativeCurrency": {
-				"name": "Görli Ether",
-				"symbol": "ETH",
-				"decimals": 18 as const
-			},
-			"infoURL": "https://optimism.io",
-			"shortName": "ogor",
-			"chainId": 420,
-			"networkId": 420
-		},
-		'OptimismKovan': {
-			"name": "Optimism Kovan",
-			"title": "Optimism Testnet Kovan",
-			"chain": "ETH",
-			"rpc": ["https://kovan.optimism.io/"],
-			"faucets": ["http://fauceth.komputing.org?chain=69&address=${ADDRESS}"],
-			"nativeCurrency": {
-				"name": "Kovan Ether",
-				"symbol": "ETH",
-				"decimals": 18 as const
-			},
-			"explorers": [
-				{
-				"name": "etherscan",
-				"url": "https://kovan-optimistic.etherscan.io",
-				"standard": "EIP3091"
-				}
-			],
-			"infoURL": "https://optimism.io",
-			"shortName": "okov",
-			"chainId": 69,
-			"networkId": 69
-		},
-		'SKALE': {
-			"name": "SKALE",
-			"chain": "ETH",
-			"rpc": ["https://eth-online.skalenodes.com/v1/hackathon-content-live-vega"],
-			"nativeCurrency": {
-				name: "SKALE FUEL",
-				symbol: "sFUEL",
-				decimals: 18 as const
-			},
-			"explorers": [
-				{
-				"name": "block explorer", //just a guess
-				"url": "https://hackathon-content-live-vega.explorer.eth-online.skalenodes.com/",
-				//"standard": "EIP3091" //just a guess
-				}
-			],
-			"infoURL": "https://skale.space",
-			"shortName": "skale",
-			"chainId": parseInt('0xf45db2a', 16),
-			"networkId": parseInt('0xf45db2a', 16)
-		},
-		'SKALE Testnet': {
-		//This is as documented at https://docs.skale.network/develop/wallets/metamask
-		//but doesn't work becuase the rpc endpoint doesn't respond to the chain_id request:
-		//"Request for method 'eth_chainId on https://dev-testnet-v1-0.skalelabs.com/ failed."
-		//For that reason, it's commented out of the UI.
-			"name": "SKALE Testnet",
-			"chain": "ETH",
-			"rpc": ["https://dev-testnet-v1-0.skalelabs.com"],
-			"nativeCurrency": {
-				name: "SKALE FUEL",
-				symbol: "sFUEL",
-				decimals: 18 as const
-			},
-			"explorers": [
-				{
-				"name": "expedition",
-				"url": "https://expedition.dev/?rpcUrl=https://dev-testnet-v1-0.skalelabs.com",
-				//"standard": "EIP3091" //just a guess
-				}
-			],
-			"infoURL": "https://skale.space",
-			"shortName": "skale",
-			"chainId": 344435,
-			"networkId": 344435
-		},
-	},
-
-	getChainData(networkOptionValue: string) {
-		let retval = RecipientPage.chainsData[networkOptionValue];
+	getChainData(networkOptionValue: keyof typeof CHAINS_DATA) {
+		let retval = CHAINS_DATA[networkOptionValue];
 		if(typeof retval === 'undefined') {
 			throw new Error('Did not recognize network name: ' + networkOptionValue);
 		} else {
