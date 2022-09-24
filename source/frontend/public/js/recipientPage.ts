@@ -249,7 +249,7 @@ export const RecipientPage = {
 			let completedTxDetails = await RecipientPage.waitThrough429s(provider, txHash);
 			signButton.innerText = 'Transaction initially confirmed on network!';
 			if(completedTxDetails.confirmations < 6) {
-			completedTxDetails = await RecipientPage.waitThrough429s(provider, txHash, 6);
+				completedTxDetails = await RecipientPage.waitThrough429s(provider, txHash, 6);
 			}
 			signButton.innerText = 'Success: Transaction confirmed at least 6x on network!';
 		} catch(err: any) {
