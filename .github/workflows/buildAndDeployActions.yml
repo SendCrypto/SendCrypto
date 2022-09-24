@@ -1,4 +1,15 @@
 name: Build and Publish on Valist
+
+on:
+  workflow_call:
+    secrets:
+      VALIST_DEPLOY_PROJECT_NAME:
+        description: 'The Valist project name.'
+        required: true
+      VALIST_DEPLOY_PRIVATE_KEY:
+        description: 'The private key of an account listed as a project administrator in Valist.'
+        required: true
+
 jobs:
   publish:
     runs-on: ubuntu-latest
