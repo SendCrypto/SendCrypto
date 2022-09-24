@@ -107,7 +107,6 @@ export const RecipientPage = {
 		masterParams: MasterParamsWithRecipient
 	) {
 		const recipient = masterParams.recipient;
-		console.log('Master params:', masterParams);
 		MostPages.setBlockVisibility('noRecipient', false);
 		MostPages.setBlockVisibility('specifiedRecipient', true);
 		let recipientSpan = document.getElementById('recipient');
