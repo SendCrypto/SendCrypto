@@ -340,11 +340,27 @@ export const RecipientPage = {
 				amount = urlSearchParamsAmountFloat;
 			}
 		}
+		let urlSearchParamsNetworkID = urlSearchParams.get('networkID');
+		let network: string | undefined = undefined;
+		if(urlSearchParamsNetworkID !== null) {
+			let urlSearchParamsNetworkIDInt = parseInt(urlSearchParamsNetworkID);
+			if(isNaN(urlSearchParamsNetworkIDInt)) {
+				urlSearchParamsNetworkIDInt = parseInt(urlSearchParamsNetworkID, 16);
+			}
+			if(!isNaN(urlSearchParamsNetworkIDInt)) {
+				for(let networkName of Object.keys(CHAINS_DATA)) {
+					if(CHAINS_DATA[networkName as keyof typeof CHAINS_DATA].networkId === urlSearchParamsNetworkIDInt){
+						network = networkName;
+					}
+				}
+			}
+		}
 		return {
 			recipient,
 			amount,
 			viewCurrency,
 			sendCurrency,
+			network
 		};
 	},
 
@@ -389,6 +405,12 @@ export const RecipientPage = {
 			console.error('Could not find network option checkboxes; not adding listeners.');
 		}
 		const networkSelector = document.getElementById('network');
+		if(!(networkSelector instanceof HTMLSelectElement)) {
+			throw new Error('Could not find network selector on page.');
+		}
+		if(masterParams.network) {
+			RecipientPage.selectOptionWithValue(networkSelector, masterParams.network);
+		}
 		networkSelector?.addEventListener('change', RecipientPage.setEthName);
 	},
 
