@@ -2,10 +2,11 @@ name: Build and Publish on Valist
 
 on:
   workflow_call:
-    secrets:
+    inputs:
       VALIST_DEPLOY_PROJECT_NAME:
         description: 'The Valist project name.'
         required: true
+    secrets:
       VALIST_DEPLOY_PRIVATE_KEY:
         description: 'The private key of an account listed as a project administrator in Valist.'
         required: true
@@ -35,6 +36,6 @@ jobs:
         with:
           private-key: ${{ secrets.VALIST_DEPLOY_PRIVATE_KEY }}
           account: sendcrypto
-          project:  ${{ secrets.VALIST_DEPLOY_PROJECT_NAME }}
+          project:  ${{ inputs.VALIST_DEPLOY_PROJECT_NAME }}
           release: ${{ github.sha }} # this can be whatever tag you wish to use
           path: dist/frontend/public

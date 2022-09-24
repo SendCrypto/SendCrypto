@@ -11,6 +11,7 @@ jobs:
   deploy:
     name: Build & deploy for production
     uses: ./.github/workflows/buildAndDeployActions.yml
+    with:
+      VALIST_DEPLOY_PROJECT_NAME: sendcrypto
     secrets:
       VALIST_DEPLOY_PRIVATE_KEY: ${{ secrets.VALIST_DEPLOY_PRIVATE_KEY }}
-      VALIST_DEPLOY_PROJECT_NAME: sendcrypto

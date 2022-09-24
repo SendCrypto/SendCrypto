@@ -11,6 +11,7 @@ jobs:
   deploy:
     name: Build & deploy for test site
     uses: ./.github/workflows/buildAndDeployActions.yml
+    with:
+      VALIST_DEPLOY_PROJECT_NAME: sendcryptotest
     secrets:
       VALIST_DEPLOY_PRIVATE_KEY: ${{ secrets.VALIST_DEPLOY_PRIVATE_KEY }}
-      VALIST_DEPLOY_PROJECT_NAME: sendcryptotest
