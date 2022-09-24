@@ -10,7 +10,6 @@ on:
     secrets:
       VALIST_DEPLOY_PRIVATE_KEY:
         description: 'The private key of an account listed as a project administrator in Valist.'
-        type: string
         required: true
 
 jobs:
