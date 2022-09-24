@@ -36,5 +36,5 @@ jobs:
           private-key: ${{ secrets.VALIST_DEPLOY_PRIVATE_KEY }}
           account: sendcrypto
           project:  ${{ secrets.VALIST_DEPLOY_PROJECT_NAME }}
-          release: ${{ github.ref_name }} # this can be whatever tag you wish to use
+          release: ${{ github.sha }} # this can be whatever tag you wish to use
           path: dist/frontend/public
