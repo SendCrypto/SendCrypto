@@ -49,6 +49,11 @@
 					Currently, options are just "ETH", which is the default assumed if no value is present.
 					This is not case-sensitive.
 				</li>
+				<li>
+					If you wish to specify which network this should be sent on, at the end of the URL add "?networkID="
+					followed by the numeric network ID. It must correspond to one of the chains supported by the drop-down menu
+					shown on the page when all L2 and test networks are shown. The default value is 1 (for mainnet Ethereum).
+				</li>
 			</ul>
 			Any "/" at the end of a URL (in this application) is optional.
 			<br>
@@ -75,7 +80,8 @@
 				</li>
 				<li>
 					If you are going to specify an amount, optionally follow that with: "&viewCurrency="
-					followed by the type of currency you would like to specify an amount in, which currently must be "ETH".
+					followed by the type of currency you would like to specify an amount in, which currently must be "ETH",
+					which will be translated into the network native coin.
 					You will eventually be able to specify the amount in "USD" or any of the cryptocurrency tokens noted below.
 					This is not case-sensitive.
 					If you do not specify anything here, USD will be assumed.
@@ -84,9 +90,16 @@
 					If you wish to specify an amount, add "&amount=" followed by the amount.
 				</li>
 				<li>
+					If you wish to specify which network this should be sent on, add "&networkID="
+					followed by the numeric network ID. It must correspond to one of the chains supported by the drop-down menu
+					shown on the page when all L2 and test networks are shown. The default value is 1 (for mainnet Ethereum).
+				</li>
+				<li>
 					If you wish to specify the cryptocurrency asset that should be specified by default,
 					if a user has holdings in multiple supported cryptocurrencies, add "&sendCurrency=" followed by the unit.
 					Currently, options are just "ETH", which is the default assumed if no value is present.
+					Also note that the value "ETH" will refer to the native coin if you're specifying an EVM network
+					that does not call its native coin ETH.
 					This is not case-sensitive.
 				</li>
 			</ul>
