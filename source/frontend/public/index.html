@@ -34,7 +34,8 @@
 				<li>Follow that with a slash: "/".</li>
 				<li>
 					Optionally follow that with the type of currency you would like to specify an amount in, followed by a slash ("/").
-					At present, this must be "ETH".
+					At present, this must be "ETH". This value will be translated to the native currency of an EVM
+					chain if you specify a different one as described below.
 					You will eventually be able to specify the amount in "USD" or any of the cryptocurrency tokens noted below.
 					This is not case-sensitive.
 					If you do not specify anything here, USD will be assumed.
@@ -46,7 +47,8 @@
 				<li>
 					Optionally include the cryptocurrency asset that should be specified by default,
 					if a user has holdings in multiple supported cryptocurrencies.
-					Currently, options are just "ETH", which is the default assumed if no value is present.
+					Currently, options are just "ETH" (referring to the default coin of whatever network may be specified),
+					which is the default assumed if no value is present.
 					This is not case-sensitive.
 				</li>
 				<li>
