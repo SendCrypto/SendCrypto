@@ -560,6 +560,12 @@ export const RecipientPage = {
 		const ethName = chainData.nativeCurrency.symbol;
 		RecipientPage.setEthNameInList('sendCurrency', ethName);
 		RecipientPage.setEthNameInList('viewCurrency', ethName);
+		const chainInfoLink = document.getElementById('chainInfoLink');
+		if(chainInfoLink === null) {
+			console.error('Cannot find #chainInfoLink to update; not updating it.');
+			return; //without throwing
+		}
+		chainInfoLink.setAttribute('href', chainData.infoURL);
 	},
 
 	isRecognizedChainLabel: function(chainLabelString: string) : chainLabelString is ChainLabel {
