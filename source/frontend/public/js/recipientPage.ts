@@ -931,7 +931,6 @@ export const RecipientPage = {
 			console.error('Could not find fireworks container element #' + containerElementId + '; not lighting them off.');
 			return;
 		}
-		console.log('Fireworks class is', Fireworks);
 		const fireworks = new Fireworks(fireworksContainer, { /* options */ })
 		fireworks.start();
 	},
