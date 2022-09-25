@@ -630,7 +630,7 @@ export const RecipientPage = {
 				completedTxDetails = await RecipientPage.waitThrough429s(provider, txHash, confirmationsNeeded);
 			}
 			signButton.innerText = 'Success: Transaction confirmed at least ' + confirmationsNeeded + 'x on network!';
-			RecipientPage.showFireworks(5*60); //5 minute show
+			RecipientPage.showFireworks(5*60); //5 minute show; not awaiting end
 		} catch(err: any) {
 			if(err.code === 4001) {
 				//user rejected tx signature request.
