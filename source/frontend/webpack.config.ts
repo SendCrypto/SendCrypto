@@ -1,5 +1,9 @@
 import * as path from 'path';
 
+//__dirname setting is from https://thewebdev.info/2022/02/27/how-to-use-__dirname-in-node-js-when-using-es6-modules/
+import { fileURLToPath } from 'url';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 export default {
 	entry: {
 		sendCryptoBundle: './transpiled/frontend/public/js/sendCryptoBundle.js',

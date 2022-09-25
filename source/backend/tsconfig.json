@@ -4,7 +4,8 @@
 		//Output:
 		"outDir": "../../transpiled/backend",
 		"removeComments": false,
-		"sourceMap": true
+		"sourceMap": true,
+		"module": "es2022",
 	},
 	"include": [
 		"./**/*",

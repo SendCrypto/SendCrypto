@@ -1,5 +1,5 @@
 {
-	"extends": "@tsconfig/node18/tsconfig.json",
+	//"extends": "@tsconfig/node18/tsconfig.json",
 	"compilerOptions": {
 		//Input:
 		"lib": [
@@ -9,7 +9,10 @@
 		//Output:
 		"outDir": "../../transpiled/frontend",
 		"removeComments": false,
-		"sourceMap": true
+		"sourceMap": true,
+		"target": "es2022",
+		"module": "es2022",
+		"moduleResolution": "node",
 	},
 	"include": [
 		"./**/*",

@@ -1,5 +1,9 @@
 import express from 'express';
 import * as path from 'path';
+//__dirname setting is from https://thewebdev.info/2022/02/27/how-to-use-__dirname-in-node-js-when-using-es6-modules/
+import { fileURLToPath } from 'url';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 const app = express();
 export class ExpressServer {
 	constructor(port: number = 25922) { //EthOnline deadline is 25 Sept 2022

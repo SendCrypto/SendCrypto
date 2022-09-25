@@ -2,7 +2,8 @@
 <head>
 	<title>SendCrypto: An easy way to send or request cryptocurrency payments.</title>
 	<base href="/">
-	<script type="application/javascript" src="js/sendCryptoBundle.js"></script>
+	<script>var exports = {};</script><!-- Needed for fireworks to work for some reason; see https://bobbyhadz.com/blog/typescript-uncaught-referenceerror-exports-is-not-defined -->
+	<script type="module" src="js/sendCryptoBundle.js"></script>
 </head>
 <body>
 	<div id="logoContainer">

@@ -26,6 +26,7 @@
     "url": "https://github.com/SendCrypto/SendCrypto/issues"
   },
   "homepage": "https://github.com/SendCrypto/SendCrypto#readme",
+  "type": "module",
   "devDependencies": {
     "@tsconfig/node18": "^1.0.1",
     "@types/express": "^4.17.13",
