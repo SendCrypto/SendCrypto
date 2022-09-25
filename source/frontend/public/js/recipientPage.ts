@@ -239,21 +239,6 @@ const CHAINS_DATA = {
 			"standard": "EIP3091"
 		}]
 	},
-	'AuroraBeta': {
-		"name": "Aurora Betanet",
-		"chain": "NEAR",
-		"rpc": ["https://betanet.aurora.dev/"],
-		"faucets": [],
-		"nativeCurrency": {
-			"name": "Ether",
-			"symbol": "ETH",
-			"decimals": 18 as const
-		},
-		"infoURL": "https://aurora.dev",
-		"shortName": "aurora-betanet",
-		"chainId": 1313161556,
-		"networkId": 1313161556
-	},
 	'AuroraTest': {
 		"name": "Aurora Testnet",
 		"chain": "NEAR",
