@@ -15,6 +15,10 @@ There is a SendCrypto page for every blockchain account, also accessible by ENS 
 Optionally, you can specify the amount you want someone to be prompted to send when they click the link.  
 This can be a fixed amount, or you can dynamically program it in to some workflow, or like so many fundraising e-mails and web pages you can 
 give people options with different amounts in different links displayed side by side, including a custom option.  
+You can also convert those links to QR codes and put them up somewhere, for example next to fixed-amount credit card tap squares, on the bottom of a bill. 
+
+Ideally, you should be able to specify this amount in terms of any crypto asset or common unit of account, including government-issued currencies,
+with the default being USD, with conversion to other government-issued currencies likely calculated through USD in an attempt to estimate equivalencies through the most liquid exchange markets. However, I was out on planned travel for most of the hackathon period so this currency conversion piece isn't in place yet. At the moment, you can only send an EVM network's native token and you have to specify the amount in ETH if you want to specify the amount at all. If the network you want to transact on uses a different name, like MATIC on Polygon, that'll show up in the interface.  Several chains are supported, prioritizing hackathon sponsors, and testnets are available if you click the box to show them. 
 
 Eventually, you'll be able to customize pages for which you are the recipient, or where the recipient has designated you to customize their page, 
 making it easy to specify alternative forms of donation such as an address where a check can be mailed or other fundraising links that don't use 
