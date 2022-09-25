@@ -1,5 +1,5 @@
-Good morning! 
-It's still early in the world of web3, where even simple tasks like sending money to someone can be a daunting challenge for a newcomer to the tech. [8]
+Good morning! [1.7]
+It's still early in the world of web3, [3.25] where even simple tasks like sending money to someone can be a daunting challenge for a newcomer to the tech. [8]
 Asking for it clearly can be tricky for traditional webmasters too, [11.5] even with open-source examples like the metamask-onboarding repo, [15] because it involves scripting for the various steps of figuring out if a person has a wallet, if it's connected, figuring out what assets a person has that they might be able to send and where those assets are kept across L2s and mainnets, actually triggering a transaction, and waiting for confirmation. [29] That learning curve to getting things right might discourage some people altogether. 
 [33]
 
