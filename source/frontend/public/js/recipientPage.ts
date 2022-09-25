@@ -617,8 +617,9 @@ export const RecipientPage = {
 				accounts[0],
 				provider.getSigner()
 			);*/
+			const recipient = await RecipientPage.getRecipientAddress(provider);
 			const txHash = await RecipientPage.initiateTransaction(
-				await RecipientPage.getRecipientAddress(provider),
+				recipient,
 				sendAmountInWei.toHexString(),
 				accounts[0]
 			);
