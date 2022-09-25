@@ -624,7 +624,7 @@ export const RecipientPage = {
 			);
 			signButton.innerText = 'Transaction pending on network';
 			let completedTxDetails = await RecipientPage.waitThrough429s(provider, txHash);
-			signButton.innerText = 'Transaction initially confirmed on network!';
+			signButton.innerText = 'Transaction initially confirmed on network! Awaiting finalization...';
 			const confirmationsNeeded = 6; //TODO: Allow recipient to specify
 			if(completedTxDetails.confirmations < confirmationsNeeded) {
 				completedTxDetails = await RecipientPage.waitThrough429s(provider, txHash, confirmationsNeeded);
