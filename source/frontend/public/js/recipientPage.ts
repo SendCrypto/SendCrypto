@@ -101,8 +101,6 @@ const CHAINS_DATA = {
 			}
 		]
 	},
-	//case 'Goerli-alt':
-	//	break;
 	'Polygon': {
 		"name": "Polygon Mainnet",
 		"chain": "Polygon",
