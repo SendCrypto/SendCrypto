@@ -219,6 +219,49 @@ const CHAINS_DATA = {
 		"chainId": 69,
 		"networkId": 69
 	},
+	'Cronos': {
+		"name": "Cronos Mainnet Beta",
+		"chain": "CRO",
+		"rpc": ["https://evm.cronos.org"],
+		"faucets": [],
+		"nativeCurrency": {
+			"name": "Cronos",
+			"symbol": "CRO",
+			"decimals": 18 as const
+		},
+		"infoURL": "https://cronos.org/",
+		"shortName": "cro",
+		"chainId": 25,
+		"networkId": 25,
+		"explorers": [{
+			"name": "Cronos Explorer",
+			"url": "https://cronos.org/explorer",
+			"standard": "none"
+		}]
+	},
+	'CronosTestnet': {
+		"name": "Cronos Testnet",
+		"chain": "CRO",
+		"rpc": [
+			"https://cronos-testnet-3.crypto.org:8545",
+			"wss://cronos-testnet-3.crypto.org:8546"
+		],
+		"faucets": ["https://cronos.crypto.org/faucet"],
+		"nativeCurrency": {
+			"name": "Crypto.org Test Coin",
+			"symbol": "TCRO",
+			"decimals": 18 as const
+		},
+		"infoURL": "https://cronos.crypto.org",
+		"shortName": "tcro",
+		"chainId": 338,
+		"networkId": 338,
+		"explorers": [{
+			"name": "Cronos Testnet Explorer",
+			"url": "https://cronos.crypto.org/explorer/testnet3",
+			"standard": "none"
+		}]
+	},
 	'SKALE': {
 		"name": "SKALE",
 		"chain": "ETH",
