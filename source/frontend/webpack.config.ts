@@ -17,7 +17,7 @@ export default {
 	performance: {
 		//Note: It would be better to more substantively address performance issue with large bundle sizes,
 		//disabling these to get the warning back and then responding more appropriately.
-		maxEntrypointSize: 512000,
-		maxAssetSize: 512000
+		maxEntrypointSize: 1024000,
+		maxAssetSize: 1024000
 	},
 }
