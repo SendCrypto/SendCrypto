@@ -622,7 +622,7 @@ export const RecipientPage = {
 				sendAmountInWei.toHexString(),
 				accounts[0]
 			);
-			signButton.innerText = 'Transaction pending on network';
+			signButton.innerText = 'Transaction pending on network...';
 			let completedTxDetails = await RecipientPage.waitThrough429s(provider, txHash);
 			signButton.innerText = 'Transaction initially confirmed on network! Awaiting finalization...';
 			const confirmationsNeeded = 6; //TODO: Allow recipient to specify
