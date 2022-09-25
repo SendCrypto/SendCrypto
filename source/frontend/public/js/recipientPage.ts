@@ -3,6 +3,7 @@
 import { MostPages } from './mostPages.js';
 import MetaMaskOnboarding from '@metamask/onboarding';
 import { ethers } from 'ethers';
+import { Fireworks } from 'fireworks-js';
 
 interface MasterParams {
 	recipient ?: string,
@@ -494,6 +495,7 @@ export const RecipientPage = {
 			RecipientPage.selectOptionWithValue(networkSelector, masterParams.network);
 			RecipientPage.setEthName()
 		}
+		RecipientPage.startFireworks(); //only here for development testing
 	},
 
 	//Adapted from https://docs.metamask.io/guide/onboarding-library.html#using-vanilla-javascript-html
@@ -919,6 +921,19 @@ export const RecipientPage = {
 				throw error;
 			}
 		}
+	},
+
+	startFireworks(
+		containerElementId = 'specifiedRecipient'
+	) {
+		const fireworksContainer = document.getElementById(containerElementId);
+		if(fireworksContainer === null) {
+			console.error('Could not find fireworks container element #' + containerElementId + '; not lighting them off.');
+			return;
+		}
+		console.log('Fireworks class is', Fireworks);
+		const fireworks = new Fireworks(fireworksContainer, { /* options */ })
+		fireworks.start();
 	},
 
 }
