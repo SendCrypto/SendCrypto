@@ -501,7 +501,7 @@ export const RecipientPage = {
 			RecipientPage.setEthName()
 		}
 		await RecipientPage.wait(1000);
-		RecipientPage.startFireworks(); //only here for development testing
+		RecipientPage.startFireworks(2); //only here for development testing
 	},
 
 	//Adapted from https://docs.metamask.io/guide/onboarding-library.html#using-vanilla-javascript-html
@@ -929,7 +929,8 @@ export const RecipientPage = {
 		}
 	},
 
-	startFireworks(
+	async startFireworks(
+		endAfterSeconds : number | null = 60,
 		containerElementId = 'fireworksContainer'
 	) {
 		const fireworksContainer = document.getElementById(containerElementId);
@@ -939,6 +940,10 @@ export const RecipientPage = {
 		}
 		const fireworks = new Fireworks(fireworksContainer, { /* options */ })
 		fireworks.start();
+		if(endAfterSeconds !== null) {
+			await RecipientPage.wait(endAfterSeconds*1000);
+			fireworks.stop();
+		}
 	},
 
 }
