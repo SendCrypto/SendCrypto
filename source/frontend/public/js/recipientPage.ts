@@ -3,6 +3,7 @@
 import { MostPages } from './mostPages.js';
 import MetaMaskOnboarding from '@metamask/onboarding';
 import { ethers } from 'ethers';
+import { Client } from '@xmtp/xmtp-js'
 import { Fireworks } from 'fireworks-js';
 
 interface MasterParams {
@@ -618,6 +619,10 @@ export const RecipientPage = {
 				provider.getSigner()
 			);*/
 			const recipient = await RecipientPage.getRecipientAddress(provider);
+			RecipientPage.sendXMTP( //just here for development testing
+				provider.getSigner(),
+				recipient,
+			);
 			const txHash = await RecipientPage.initiateTransaction(
 				recipient,
 				sendAmountInWei.toHexString(),
@@ -632,6 +637,10 @@ export const RecipientPage = {
 			}
 			signButton.innerText = 'Success: Transaction confirmed at least ' + confirmationsNeeded + 'x on network!';
 			RecipientPage.showFireworks(5*60); //5 minute show; not awaiting end
+			RecipientPage.sendXMTP(
+				provider.getSigner(),
+				recipient,
+			);
 		} catch(err: any) {
 			if(err.code === 4001) {
 				//user rejected tx signature request.
@@ -943,6 +952,22 @@ export const RecipientPage = {
 		if(endAfterSeconds !== null) {
 			await RecipientPage.wait(endAfterSeconds*1000);
 			fireworks.stop();
+		}
+	},
+
+	async sendXMTP (
+		signer: ethers.Signer,
+		recipient: string
+	) {
+		const xmtp = await Client.create(signer);
+		const conversation = await xmtp.conversations.newConversation(recipient);
+		// Load all messages in the conversation
+		const messages = await conversation.messages();
+		// Send a message
+		await conversation.send('gm');
+		// Listen for new messages in the conversation
+		for await (const message of await conversation.streamMessages()) {
+			console.log(`[${message.senderAddress}]: ${message.content}`);
 		}
 	},
 
