@@ -924,7 +924,7 @@ export const RecipientPage = {
 	},
 
 	startFireworks(
-		containerElementId = 'specifiedRecipient'
+		containerElementId = 'fireworksContainer'
 	) {
 		const fireworksContainer = document.getElementById(containerElementId);
 		if(fireworksContainer === null) {
