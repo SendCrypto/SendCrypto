@@ -219,6 +219,61 @@ const CHAINS_DATA = {
 		"chainId": 69,
 		"networkId": 69
 	},
+	'Aurora': {
+		"name": "Aurora Mainnet",
+		"chain": "NEAR",
+		"rpc": ["https://mainnet.aurora.dev"],
+		"faucets": [],
+		"nativeCurrency": {
+			"name": "Ether",
+			"symbol": "ETH",
+			"decimals": 18 as const
+		},
+		"infoURL": "https://aurora.dev",
+		"shortName": "aurora",
+		"chainId": 1313161554,
+		"networkId": 1313161554,
+		"explorers": [{
+			"name": "aurorascan.dev",
+			"url": "https://aurorascan.dev",
+			"standard": "EIP3091"
+		}]
+	},
+	'AuroraBeta': {
+		"name": "Aurora Betanet",
+		"chain": "NEAR",
+		"rpc": ["https://betanet.aurora.dev/"],
+		"faucets": [],
+		"nativeCurrency": {
+			"name": "Ether",
+			"symbol": "ETH",
+			"decimals": 18 as const
+		},
+		"infoURL": "https://aurora.dev",
+		"shortName": "aurora-betanet",
+		"chainId": 1313161556,
+		"networkId": 1313161556
+	},
+	'AuroraTest': {
+		"name": "Aurora Testnet",
+		"chain": "NEAR",
+		"rpc": ["https://testnet.aurora.dev/"],
+		"faucets": [],
+		"nativeCurrency": {
+			"name": "Ether",
+			"symbol": "ETH",
+			"decimals": 18 as const
+		},
+		"infoURL": "https://aurora.dev",
+		"shortName": "aurora-testnet",
+		"chainId": 1313161555,
+		"networkId": 1313161555,
+		"explorers": [{
+			"name": "aurorascan.dev",
+			"url": "https://testnet.aurorascan.dev",
+			"standard": "EIP3091"
+		}]
+	},
 	'Cronos': {
 		"name": "Cronos Mainnet Beta",
 		"chain": "CRO",
