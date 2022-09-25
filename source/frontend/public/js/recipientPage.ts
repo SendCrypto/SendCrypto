@@ -355,6 +355,11 @@ type ChainLabel = keyof typeof CHAINS_DATA;
 export const RecipientPage = {
 	SIGN_TX_BUTTON_LABEL: 'Sign transaction in wallet!',
 
+
+	wait: function(ms: number) {
+		return new Promise((r, j)=>setTimeout(r, ms));
+	},
+
 	onPageLoad : function() {
 		MostPages.onPageLoad();
 		const masterParams = RecipientPage.getParamsFromPath();
@@ -458,7 +463,7 @@ export const RecipientPage = {
 		return supportedSendCurrencies.includes(strIn.toUpperCase());
 	},
 
-	showSendPage: function(
+	showSendPage: async function(
 		masterParams: MasterParamsWithRecipient
 	) {
 		const recipient = masterParams.recipient;
@@ -495,6 +500,7 @@ export const RecipientPage = {
 			RecipientPage.selectOptionWithValue(networkSelector, masterParams.network);
 			RecipientPage.setEthName()
 		}
+		await RecipientPage.wait(1000);
 		RecipientPage.startFireworks(); //only here for development testing
 	},
 
