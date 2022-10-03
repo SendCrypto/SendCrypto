@@ -941,7 +941,7 @@ export const RecipientPage = {
 		fireworks.start();
 		if(endAfterSeconds !== null) {
 			await RecipientPage.wait(endAfterSeconds*1000);
-			fireworks.stop();
+			await fireworks.waitStop();
 		}
 	},
 
