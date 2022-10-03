@@ -11,6 +11,7 @@ export const MostPages = {
 			return;
 		}
 		head.append(
+			/* Hard-coding this to reduce time where unstyled content is displayed
 			MostPages.createElementWithAttributes(
 				'link',
 				{
@@ -18,6 +19,7 @@ export const MostPages = {
 					href: "./css/app.css",
 				}
 			),
+			*/
 			MostPages.createElementWithAttributes(
 				'link',
 				{
